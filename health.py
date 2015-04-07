@@ -1,6 +1,3 @@
-#code from Kevin, Jacob, Phillip
-#https://code.google.com/p/butterfly-game1/
-
 import pygame,math,sys,random
 
 class HealthBar():

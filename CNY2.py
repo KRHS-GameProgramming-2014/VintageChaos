@@ -3,14 +3,12 @@ from HUD import *
 from Ball import Ball
 from PlayerBall import PlayerBall
 from Wall import Wall
-from LevelChangeWall import LevelChangeWall
 from HUD import Text
 from HUD import Score
 from Button import Button
 from Vision import Vision
-from crabrock import Gun
-from health import HealthBar
-from pewpew import Bullet
+from health import HealthBar 
+
 
 
 pygame.init()
@@ -24,32 +22,10 @@ size = width, height
 screen = pygame.display.set_mode(size)
 
 bgColor = r,g,b = 100, 30, 234
-bgI = pygame.image.load("images/map1.png")
+bgI = pygame.image.load("Images/tiles/tile1.png")
 bgR = bgI.get_rect()
-bgImage = pygame.image.load("images/Screens/Capture.png").convert()
+bgImage = pygame.image.load("Images/mmscreens/bg.png").convert()
 bgRect = bgImage.get_rect()
-
-walls = [Wall([13, 12], [931, 28]),
-         Wall([13, 12], [26, 593]),
-         Wall([21, 254], [90, 271]),
-         Wall([184, 255], [577, 268]),
-         Wall([270, 256], [285, 576]),
-         Wall([562, 262], [576, 349]),
-         Wall([23, 157], [254, 173]),
-         Wall([345, 157], [752, 175]),
-         Wall([739, 157], [755, 351]),
-         Wall([512, 28], [529, 158]),
-         Wall([913, 14], [931, 592]),
-         Wall([560, 432], [576, 577]),
-         Wall([739, 432], [755, 575]),
-         Wall([62, 46], [222, 125]),
-         Wall([24, 576], [932, 591]),
-         Wall([93, 351], [173, 477]),
-         Wall([482, 61], [512, 106])]
-lcWalls = [LevelChangeWall([530,30],[735,155], "map2"),
-           LevelChangeWall([793,576],[890,590], "map2")]
-         
-    
 
 
 
@@ -81,8 +57,8 @@ score2 = Score([width-80,height-25], "BUBBA:", 36)
 run = False
 
 startButton = Button([width/2, height-300], 
-                                     "images/Button/newbutton.png", 
-                                     "images/Button/newbuttonc.png")
+                                     "images/button/sgbutton.png", 
+                                     "images/button/sgbutton.png")
 
 while True:
         while not run:
