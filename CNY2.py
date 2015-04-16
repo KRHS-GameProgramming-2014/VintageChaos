@@ -12,7 +12,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 1300
+width = 1150
 height = 700
 size = width, height
 
@@ -21,7 +21,7 @@ bgColor = r,g,b = 0, 0, 10
 
 screen = pygame.display.set_mode(size)
 
-bgImage = pygame.image.load("Images/mmscreens/Start Screen.png").convert()
+bgImage = pygame.image.load("Images/mmscreens/bg.png").convert()
 bgRect = bgImage.get_rect()
 
 balls = pygame.sprite.Group()
@@ -43,7 +43,7 @@ run = False
 
 startButton = Button([width/2, height-300], 
 				     "Images/Button/sgbutton.png", 
-				     "Images/Button/sgbutton.png")
+				     "Images/Button/sgbuttonc.png")
 
 
 player1 = PlayerBall(1, [width/3, height/3])
