@@ -45,8 +45,6 @@ startButton = Button([width/2, height-300],
 				     "Images/Button/sgbutton.png", 
 				     "Images/Button/sgbutton.png")
 
-while True:
-
 
 player1 = PlayerBall(1, [width/3, height/3])
 player2 = PlayerBall(2, [2*width/3, 2*height/3])
