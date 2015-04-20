@@ -7,6 +7,7 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
+from HUD import Score
 
 pygame.init()
 
@@ -44,6 +45,7 @@ run = False
 startButton = Button([width/2, height-300], 
 				     "Images/Button/sgbutton.png", 
 				     "Images/Button/sgbuttonc.png")
+
 
 
 player1 = PlayerBall(1, [width/3, height/3])
