@@ -30,10 +30,12 @@ players = pygame.sprite.Group()
 hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
+buttons = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
 Ball.containers = (all, balls)
 PlayerBall.containers = (all, players)
+PlayerSelect.containers = (all, buttons)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
@@ -46,6 +48,8 @@ startButton = Button([width/2, height-300],
 				     "Images/Button/sgbutton.png", 
 				     "Images/Button/sgbuttonc.png")
 
+p1Select = PlayerSelect([200,200])
+p2Select = PlayerSelect([200,400])
 
 
 player1 = PlayerBall(1, [width/3, height/3])
