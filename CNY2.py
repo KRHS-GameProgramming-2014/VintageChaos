@@ -52,8 +52,8 @@ p1Select = PlayerSelect([200,200])
 p2Select = PlayerSelect([200,400])
 
 
-player1 = PlayerBall(1, [width/3, height/3])
-player2 = PlayerBall(2, [2*width/3, 2*height/3])
+player1 = PlayerBall([width/3, height/3], 'H')
+player2 = PlayerBall([2*width/3, 2*height/3], 'P')
 
 #healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
 

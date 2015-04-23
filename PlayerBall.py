@@ -7,7 +7,9 @@ class PlayerBall(Ball):
         # 'H' : Heavy
         # 'M' : Medic
         # 'P' : Pablo
+
         Ball.__init__(self, "images/Player/pballbu.png", [0,0], pos)
+      
         basePath = "players/"
         #                                                       action|Frame|Direction
         self.walkUpImages = [pygame.image.load(basePath + kind + "w" + "0" + "w" + ".png"),
@@ -127,16 +129,16 @@ class PlayerBall(Ball):
 
 
 
-                self.facing = "up"
-                self.changed = False
-                self.images = self.upImages
-                self.frame = 0
-                self.maxFrame = len(self.images) - 1
-                self.waitCount = 0
-                self.maxWait = 60*.25
-                self.image = self.images[self.frame]
-                self.rect = self.image.get_rect(center = self.rect.center)
-                self.maxSpeed = 10
+            self.facing = "up"
+            self.changed = False
+            self.images = self.upImages
+            self.frame = 0
+            self.maxFrame = len(self.images) - 1
+            self.waitCount = 0
+            self.maxWait = 60*.25
+            self.image = self.images[self.frame]
+            self.rect = self.image.get_rect(center = self.rect.center)
+            self.maxSpeed = 10
             
 def update(*args):
         self = args[0]
