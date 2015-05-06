@@ -14,7 +14,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 1150
+width = 1000
 height = 700
 size = width, height
 
@@ -115,6 +115,22 @@ while True:
 	timerWaitMax = 6
 
 	score = Score([width-80, height-25], "Score: ", 36)
+
+        
+BackGround("images/mmscreens/Main Screen.png")
+    
+player = PlayerBall([width/2, height/2])
+    
+    
+level = Level(size, 50)
+level.loadLevel("1")
+
+timer = Score([80, height - 25], "Time: ", 36)
+timerWait = 0
+timerWaitMax = 6
+
+score = Score([width-80, height-25], "Score: ", 36)
+
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()

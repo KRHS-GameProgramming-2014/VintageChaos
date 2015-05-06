@@ -2,7 +2,6 @@ import pygame
 from Ball import Ball
 
 class PlayerBall(Ball):
-<<<<<<< HEAD
     def __init__(self, pos, kind):
         #Kinds:
         # 'H' : Heavy
@@ -44,22 +43,6 @@ class PlayerBall(Ball):
                          pygame.image.load(basePath + kind + "w" + "6" + "a" + ".png"),
                          pygame.image.load(basePath + kind + "w" + "7" + "a" + ".png")]
 
-=======
-    def __init__(self, pos):
-        Ball.__init__(self, "images/Player/pballbu.png", [0,0], pos)
-        self.upImages = [pygame.image.load("images/Player/pballru.png"),
-                         pygame.image.load("images/Player/pballgu.png"),
-                         pygame.image.load("images/Player/pballbu.png")]
-        self.downImages = [pygame.image.load("images/Player/pballrd.png"),
-                           pygame.image.load("images/Player/pballgd.png"),
-                           pygame.image.load("images/Player/pballbd.png")]
-        self.leftImages = [pygame.image.load("images/Player/pballrl.png"),
-                           pygame.image.load("images/Player/pballgl.png"),
-                           pygame.image.load("images/Player/pballbl.png")]
-        self.rightImages = [pygame.image.load("images/Player/pballrr.png"),
-                            pygame.image.load("images/Player/pballgr.png"),
-                            pygame.image.load("images/Player/pballbr.png")]
->>>>>>> origin/master
         self.facing = "up"
         self.changed = False
         self.images = self.upImages
@@ -141,7 +124,19 @@ class PlayerBall(Ball):
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
-<<<<<<< HEAD
+
+
+
+            self.facing = "up"
+            self.changed = False
+            self.images = self.upImages
+            self.frame = 0
+            self.maxFrame = len(self.images) - 1
+            self.waitCount = 0
+            self.maxWait = 60*.25
+            self.image = self.images[self.frame]
+            self.rect = self.image.get_rect(center = self.rect.center)
+            self.maxSpeed = 10
             
 def update(*args):
         self = args[0]
@@ -213,6 +208,4 @@ def go(self, direction):
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
-=======
->>>>>>> origin/master
 
