@@ -8,6 +8,7 @@ from BackGround import BackGround
 from Level import Level
 from Block import Block
 from HUD import Score
+from PlayerSelect import PlayerSelect
 
 pygame.init()
 
@@ -50,10 +51,6 @@ startButton = Button([width/2, height-300],
 
 p1Select = PlayerSelect([200,200])
 p2Select = PlayerSelect([200,400])
-
-
-player1 = PlayerBall(1, [width/3, height/3])
-player2 = PlayerBall(2, [2*width/3, 2*height/3])
 
 #healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
 
@@ -105,7 +102,7 @@ while True:
 		
 	BackGround("images/mmscreens/Main Screen.png")
 	
-	player = PlayerBall([width/2, height/2])
+	player = PlayerBall([width/2, height/2], "M")
 	
 	
 	level = Level(size, 50)
