@@ -46,10 +46,10 @@ Score.containers = (all, hudItems)
 run = False
 
 startButton = Button([width/2, height-300], 
-				     "Images/Button/sgbutton.png", 
-				     "Images/Button/sgbuttonc.png")
+                     "Images/Button/sgbutton.png", 
+                     "Images/Button/sgbuttonc.png")
 
-while True:
+
 
 p1Select = PlayerSelect([200,200])
 p2Select = PlayerSelect([200,400])
@@ -101,20 +101,20 @@ while True:
                 screen.blit(startButton.image, startButton.rect)
                 pygame.display.flip()
                 clock.tick(60)
-		
-	BackGround("images/mmscreens/Main Screen.png")
-	
-	player = PlayerBall([width/2, height/2], "M")
-	
-	
-	level = Level(size, 50)
-	level.loadLevel("1")
+        
+BackGround("images/mmscreens/Main Screen.png")
+    
+player = PlayerBall([width/2, height/2], "M")
+    
+    
+    level = Level(size, 50)
+    level.loadLevel("1")
 
-	timer = Score([80, height - 25], "Time: ", 36)
-	timerWait = 0
-	timerWaitMax = 6
+    timer = Score([80, height - 25], "Time: ", 36)
+    timerWait = 0
+    timerWaitMax = 6
 
-	score = Score([width-80, height-25], "Score: ", 36)
+    score = Score([width-80, height-25], "Score: ", 36)
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
@@ -161,9 +161,9 @@ while True:
                     if event.key == pygame.K_LEFT:
                         player2.go("stop left")
                 if event.type == pygame.MOUSEBUTTONDOWN:
-					if  event.button == 1:
-						print "OW!!!!!"
-						player2.punch()
+                    if  event.button == 1:
+                        print "OW!!!!!"
+                        player2.punch()
                     
                 
             if len(balls) < 2:
@@ -254,29 +254,29 @@ while True:
             else:
                 timerWait = 0
                 timer.increaseScore(.1)
-		
-		playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
-		ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
-		
-		for player in playersHitBalls:
-			for ball in playersHitBalls[player]:
-				score.increaseScore(1)
-				
-		for bully in ballsHitBalls:
-			for victem in ballsHitBalls[bully]:
-				bully.collideBall(victem)
-		
-		all.update(width, height)
-		
-		dirty = all.draw(screen)
-		pygame.display.update(dirty)
-		pygame.display.flip()
-		clock.tick(60)
-		
-		
-		
-		
-		
-		
-		
-		
+        
+        playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
+        ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
+        
+        for player in playersHitBalls:
+            for ball in playersHitBalls[player]:
+                score.increaseScore(1)
+                
+        for bully in ballsHitBalls:
+            for victem in ballsHitBalls[bully]:
+                bully.collideBall(victem)
+        
+        all.update(width, height)
+        
+        dirty = all.draw(screen)
+        pygame.display.update(dirty)
+        pygame.display.flip()
+        clock.tick(60)
+        
+        
+        
+        
+        
+        
+        
+        
