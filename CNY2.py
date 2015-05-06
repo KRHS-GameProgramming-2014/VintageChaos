@@ -49,6 +49,8 @@ startButton = Button([width/2, height-300],
 				     "Images/Button/sgbutton.png", 
 				     "Images/Button/sgbuttonc.png")
 
+while True:
+
 p1Select = PlayerSelect([200,200])
 p2Select = PlayerSelect([200,400])
 
