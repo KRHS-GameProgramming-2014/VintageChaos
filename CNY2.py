@@ -14,7 +14,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 1150
+width = 1000
 height = 700
 size = width, height
 
