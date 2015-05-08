@@ -40,6 +40,7 @@ PlayerSelect.containers = (all, buttons)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
+Text.containers = (all, hudItems)
 
 
 
@@ -59,10 +60,8 @@ p2Select = PlayerSelect([200,400])
 bullets = []
 
 balls = []
-balls += [Ball("images/Ball/crabman.png", [0,0], [150, 200])]
+balls += [Ball("enemys/Bmw.png", [0,0], [150, 200])]
 
-pygame.mixer.music.load("Music/crny.mp3")
-pygame.mixer.music.play(-1, 0.0)
 
 
 
@@ -119,7 +118,7 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
         if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_w:
+            if event.key == pygame.K_w:
                 player1.go("up")
             if event.key == pygame.K_d:
                 player1.go("right")
