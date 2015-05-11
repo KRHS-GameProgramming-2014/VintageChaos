@@ -23,11 +23,11 @@ class Ball(pygame.sprite.Sprite):
         height = args[2]
         self.didBounceX = False
         self.didBounceY = False
-        self.speed = [self.speedx, self.speedy]
         self.move()
         self.collideWall(width, height)
         
     def move(self):
+        self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
         
     def collideWall(self, width, height):
@@ -69,4 +69,16 @@ class Ball(pygame.sprite.Sprite):
         x2 = pt[0]
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
