@@ -7,7 +7,6 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
-from Wall import Wall
 
 pygame.init()
 
