@@ -41,6 +41,10 @@ BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
 Text.containers = (all, hudItems)
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 
 
 run = False
@@ -60,10 +64,15 @@ p2Select = PlayerSelect([200,400])
 bullets = []
 
 balls = []
+<<<<<<< HEAD
 balls += [Ball("Enemy/Ba.png", [0,0], [150, 200])]
 
 #pygame.mixer.music.load("Music/crny.mp3")
 #pygame.mixer.music.play(-1, 0.0)
+=======
+balls += [Ball("enemys/Bmw.png", [0,0], [150, 200])]
+
+>>>>>>> origin/master
 
 
 
@@ -128,6 +137,7 @@ timerWaitMax = 6
 
 score = Score([width-80, height-25], "Score: ", 36)
 while run:
+<<<<<<< HEAD
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
                 if event.type == pygame.KEYDOWN:
@@ -172,6 +182,48 @@ while run:
                         player2.go("stop down")
                     if event.key == pygame.K_LEFT:
                         player2.go("stop left")
+=======
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_w:
+                player1.go("up")
+            if event.key == pygame.K_d:
+                player1.go("right")
+            if event.key == pygame.K_s:
+                player1.go("down")
+            if event.key == pygame.K_a:
+                player1.go("left")
+            
+            if event.key == pygame.K_UP:
+                player2.go("up")
+            if event.key == pygame.K_RIGHT:
+                player2.go("right")
+            if event.key == pygame.K_DOWN:
+                player2.go("down")
+            if event.key == pygame.K_LEFT:
+                player2.go("left")
+              
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_w:
+                    player1.go("stop up")
+                if event.key == pygame.K_d:
+                    player1.go("stop right")
+                if event.key == pygame.K_s:
+                    player1.go("stop down")
+                if event.key == pygame.K_a:
+                    player1.go("stop left")
+                if event.key == pygame.K_q:
+                    player1.go("stop punch")
+                if event.key == pygame.K_UP:
+                    player2.go("stop up")
+                if event.key == pygame.K_RIGHT:
+                    player2.go("stop right")
+                if event.key == pygame.K_DOWN:
+                    player2.go("stop down")
+                if event.key == pygame.K_LEFT:
+                    player2.go("stop left")
+>>>>>>> origin/master
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if  event.button == 1:
                         print "OW!!!!!"
