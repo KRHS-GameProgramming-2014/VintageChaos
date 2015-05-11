@@ -40,7 +40,7 @@ PlayerSelect.containers = (all, buttons)
 BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Score.containers = (all, hudItems)
-
+Text.containers = (all, hudItems)
 
 
 run = False
@@ -49,20 +49,21 @@ startButton = Button([width/2, height-300],
                      "Images/Button/sgbutton.png", 
                      "Images/Button/sgbuttonc.png")
 
-while True:
 
-    p1Select = PlayerSelect([200,200])
-    p2Select = PlayerSelect([200,400])
+
+
+p1Select = PlayerSelect([200,200])
+p2Select = PlayerSelect([200,400])
 
 #healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
 
 bullets = []
 
 balls = []
-balls += [Ball("images/Ball/crabman.png", [0,0], [150, 200])]
+balls += [Ball("Enemy/Ba.png", [0,0], [150, 200])]
 
-pygame.mixer.music.load("Music/crny.mp3")
-pygame.mixer.music.play(-1, 0.0)
+#pygame.mixer.music.load("Music/crny.mp3")
+#pygame.mixer.music.play(-1, 0.0)
 
 
 
@@ -104,6 +105,7 @@ while True:
         
         BackGround("images/mmscreens/Main Screen.png")
     
+
         player = PlayerBall([width/2, height/2], "M")
     
     
@@ -114,24 +116,109 @@ while True:
         timerWait = 0
         timerWaitMax = 6
 
-        score = Score([width-80, height-25], "Score: ", 36)
+player = PlayerBall([width/2, height/2], "M")
+    
+    
+level = Level(size, 50)
+level.loadLevel("1")
+
+timer = Score([80, height - 25], "Time: ", 36)
+timerWait = 0
+timerWaitMax = 6
+
+score = Score([width-80, height-25], "Score: ", 36)
+while run:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_w:
+                        player1.go("up")
+                    if event.key == pygame.K_d:
+                        player1.go("right")
+                    if event.key == pygame.K_s:
+                        player1.go("down")
+                    if event.key == pygame.K_a:
+                        player1.go("left")
+                    if event.key == pygame.K_q:
+                        player1.punch()
+
+                    if event.key == pygame.K_UP:
+                        player2.go("up")
+                    if event.key == pygame.K_RIGHT:
+                        player2.go("right")
+                    if event.key == pygame.K_DOWN:
+                        player2.go("down")
+                    if event.key == pygame.K_LEFT:
+                        player2.go("left")
+                    if event.key == pygame.K_m:
+                        player2.punch()
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_w:
+                        player1.go("stop up")
+                    if event.key == pygame.K_d:
+                        player1.go("stop right")
+                    if event.key == pygame.K_s:
+                        player1.go("stop down")
+                    if event.key == pygame.K_a:
+                        player1.go("stop left")
+                    if event.key == pygame.K_q:
+                        player1.go("stop punch")
+
+                    if event.key == pygame.K_UP:
+                        player2.go("stop up")
+                    if event.key == pygame.K_RIGHT:
+                        player2.go("stop right")
+                    if event.key == pygame.K_DOWN:
+                        player2.go("stop down")
+                    if event.key == pygame.K_LEFT:
+                        player2.go("stop left")
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if  event.button == 1:
+                        print "OW!!!!!"
+                        player2.punch()
+                    
+                
+            if len(balls) < 2:
+                if random.randint(0, .25*60) == 0:
+                    balls += [Ball("Enemy/Ba1.png",
+                              [random.randint(0,10), random.randint(0,10)],
+                              [random.randint(100, width-100), random.randint(100, height-100)])
+                              ]
+            if len(balls) < 2:
+                if random.randint(0, .25*60) == 0:
+                    balls += [Ball("Enemy/Ba.png",
+                              [random.randint(0,10), random.randint(0,10)],
+                              [random.randint(100, width-100), random.randint(100, height-100)]
+                            )]
+                              
+            
+      
+      
+            player1.update(width, height)
+            player2.update(width, height)
+            timer.update()
+            score1.update()
+            score2.update()
+
+
+            score = Score([width-80, height-25], "Score: ", 36)
 
             
-        BackGround("images/mmscreens/Main Screen.png")
+            BackGround("images/mmscreens/Main Screen.png")
         
-        player = PlayerBall([width/2, height/2])
+            player = PlayerBall([width/2, height/2])
         
         
-        level = Level(size, 50)
-        level.loadLevel("1")
+            level = Level(size, 50)
+            level.loadLevel("1")
 
-        timer = Score([80, height - 25], "Time: ", 36)
-        timerWait = 0
-        timerWaitMax = 6
+            timer = Score([80, height - 25], "Time: ", 36)
+            timerWait = 0
+            timerWaitMax = 6
 
-        score = Score([width-80, height-25], "Score: ", 36)
+            score = Score([width-80, height-25], "Score: ", 36)
 
-        while run:
+            while run:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT: sys.exit()
                     if event.type == pygame.KEYDOWN:
@@ -184,13 +271,13 @@ while True:
                         
                     if len(balls) < 2:
                         if random.randint(0, .25*60) == 0:
-                            balls += [Ball("images/Ball/spinnything.png",
+                            balls += [Ball("Enemy/Ba.png",
                                       [random.randint(0,10), random.randint(0,10)],
                                       [random.randint(100, width-100), random.randint(100, height-100)])
                                       ]
                     if len(balls) < 2:
                         if random.randint(0, .25*60) == 0:
-                            balls += [Ball("images/Ball/crabman.png",
+                            balls += [Ball("Enemy/Ba1.png",
                                       [random.randint(0,10), random.randint(0,10)],
                                       [random.randint(100, width-100), random.randint(100, height-100)]
                                     )]
@@ -211,6 +298,7 @@ while True:
                  #   for vision in visions:
                    #     vision.update()
                     
+
                     for ball in balls:
                         ball.update(width, height)
                         
@@ -296,3 +384,41 @@ while True:
             
             
             
+
+
+            for ball in balls:
+                if not ball.living:
+                    balls.remove(ball)
+            if timerWait < timerWaitMax:
+                timerWait += 10
+
+            else:
+                timerWait = 0
+                timer.increaseScore(.1)
+        
+            playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
+            ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
+        
+            for player in playersHitBalls:
+                for ball in playersHitBalls[player]:
+                    score.increaseScore(1)
+                
+            for bully in ballsHitBalls:
+                for victem in ballsHitBalls[bully]:
+                    bully.collideBall(victem)
+            
+            all.update(width, height)
+        
+            dirty = all.draw(screen)
+            pygame.display.update(dirty)
+            pygame.display.flip()
+            clock.tick(60)
+        
+        
+        
+        
+        
+        
+        
+        
+
