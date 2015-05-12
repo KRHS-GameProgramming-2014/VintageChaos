@@ -66,7 +66,7 @@ while True:
 		pygame.display.flip()
 		clock.tick(60)
 		
-	BackGround("images/Screens/Main Screen.png", size)
+	BackGround("images/Screens/greybg.png", size)
 	
 	player = PlayerBall([width/2, height/2])
 	
