@@ -21,7 +21,7 @@ bgColor = r,g,b = 0, 0, 10
 
 screen = pygame.display.set_mode(size)
 
-bgImage = pygame.image.load("images/Screens/Start Screen.png").convert()
+bgImage = pygame.image.load("Images/mmscreens/bg.png").convert()
 bgImage = pygame.transform.scale(bgImage, size)
 bgRect = bgImage.get_rect()
 
@@ -66,7 +66,7 @@ while True:
 		pygame.display.flip()
 		clock.tick(60)
 		
-	BackGround("images/Screens/greybg.png", size)
+	BackGround("images/Screens/3dbg.png", size)
 	
 	player = PlayerBall([width/2, height/2])
 	
