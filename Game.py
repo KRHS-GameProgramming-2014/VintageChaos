@@ -21,7 +21,7 @@ bgColor = r,g,b = 0, 0, 10
 
 screen = pygame.display.set_mode(size)
 
-bgImage = pygame.image.load("Images/mmscreens/bg.png").convert()
+bgImage = pygame.image.load("Images/mmscreens/vbg.png").convert()
 bgImage = pygame.transform.scale(bgImage, size)
 bgRect = bgImage.get_rect()
 
@@ -43,8 +43,8 @@ Score.containers = (all, hudItems)
 run = False
 
 startButton = Button([width/2, height-300], 
-				     "images/Button/sgbutton.png", 
-				     "images/Button/sgbuttonc.png")
+				     "images/Buttons/StartButton.png", 
+				     "images/Buttons/StartButton.png")
 
 while True:
 	while not run:
