@@ -42,7 +42,7 @@ Score.containers = (all, hudItems)
 
 run = False
 
-startButton = Button([width/2, height-300], 
+startButton = Button([width/2, height-580], 
                      "images/Buttons/StartButton.png")
                      
 kind = ""
