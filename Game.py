@@ -21,7 +21,7 @@ bgColor = r,g,b = 0, 0, 10
 
 screen = pygame.display.set_mode(size)
 
-bgImage = pygame.image.load("images/Screens/Start Screen.png").convert()
+bgImage = pygame.image.load("Images/mmscreens/vbg.png").convert()
 bgImage = pygame.transform.scale(bgImage, size)
 bgRect = bgImage.get_rect()
 
@@ -43,6 +43,7 @@ Score.containers = (all, hudItems)
 run = False
 
 startButton = Button([width/2, height-300], 
+
                      "images/Button/sgbutton.png", 
                      "images/Button/sgbuttonc.png")
                      
@@ -120,7 +121,7 @@ while True:
         
         playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
         ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
-        #playersHitBlocks = pygame.sprite.groupcollide(players, blocks, False, False)
+        playersHitBlocks = pygame.sprite.groupcollide(players, blocks, False, False)
         
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
@@ -129,9 +130,9 @@ while True:
         for bully in ballsHitBalls:
             for victem in ballsHitBalls[bully]:
                 bully.collideBall(victem)
-        #for bully in playersHitBlocks:
-            #for victem in playersHitBlocks[bully]:
-                #bully.collideBlock(victem)
+        for bully in playersHitBlocks:
+            for victem in playersHitBlocks[bully]:
+                bully.collideBlock(victem)
         
         all.update(width, height)
         
@@ -139,17 +140,4 @@ while True:
         pygame.display.update(dirty)
         pygame.display.flip()
         clock.tick(60)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
