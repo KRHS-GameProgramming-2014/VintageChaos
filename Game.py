@@ -46,8 +46,8 @@ Score.containers = (all, hudItems)
 run = False
 
 startButton = Button([width/2, height-580], 
-                     "images/Buttons/StartButton.png"),
-                    "images/Buttons/StartButtonC.png")]
+                     "images/Buttons/StartButton.png",
+                     "images/Buttons/StartButtonC.png")
 
 
 
