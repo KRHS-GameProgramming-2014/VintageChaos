@@ -7,6 +7,7 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
+import time
 
 pygame.init()
 
@@ -18,6 +19,8 @@ size = width, height
 
 
 bgColor = r,g,b = 0, 0, 10
+
+pygame.display.set_caption("Vintage Chaos")
 
 screen = pygame.display.set_mode(size)
 
@@ -43,7 +46,14 @@ Score.containers = (all, hudItems)
 run = False
 
 startButton = Button([width/2, height-580], 
-                     "images/Buttons/StartButton.png")
+                     "images/Buttons/StartButton.png"),
+                    "images/Buttons/StartButtonC.png")]
+
+
+
+     
+
+
                      
 kind = ""
 
@@ -68,7 +78,7 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    BackGround("images/Screens/Main Screen.png", size)
+    BackGround("images/Screens/3dbg.png", size)
     
     level = Level(size, 50)
     level.loadLevel("1")
