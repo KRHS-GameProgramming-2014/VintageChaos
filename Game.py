@@ -130,7 +130,7 @@ while True:
         playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
         ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
         playersHitBlocks = pygame.sprite.groupcollide(players, blocks, False, False)
-        
+   #Its not dirty I swear     
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
                 score.increaseScore(1)
