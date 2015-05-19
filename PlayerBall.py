@@ -83,6 +83,12 @@ class PlayerBall(pygame.sprite.Sprite):
         self.speed = [self.speedx, self.speedy]
         self.rect = self.rect.move(self.speed)
         
+    def collideBlock(self, other):
+        self.speedx = -self.speedx
+        self.speedy = -self.speedy
+        self.move()
+        self.speedx = 0
+        self.speedy = 0
     def collideWall(self, width, height):
         if not self.didBounceX:
             #print "trying to hit Wall"

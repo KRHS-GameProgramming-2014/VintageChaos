@@ -20,6 +20,8 @@ size = width, height
 
 bgColor = r,g,b = 0, 0, 10
 
+pygame.display.set_caption("Vintage Chaos")
+
 screen = pygame.display.set_mode(size)
 
 
