@@ -50,7 +50,7 @@ class PlayerBall(pygame.sprite.Sprite):
         self.frame = 0
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
-        self.maxWait = 60*.025
+        self.maxWait = 60*.06
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect(center = pos)
         self.maxSpeed = 10
@@ -151,5 +151,13 @@ class PlayerBall(pygame.sprite.Sprite):
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
+            
+	def attack(self, atk):
+		if atk == "Minigun" and self.MinigunCoolDown == 0:
+			self.shooting = True
+			#self.MinigunCoolDown = self.MinigunCoolDownMax
+			return [Bullet(self.rect.center, self.angle)]
+		
+		return []
             
    
