@@ -80,6 +80,14 @@ while True:
                     ps1.next()
                 if event.key == pygame.K_RETURN:
                     run = True
+                if event.key == pygame.K_LEFT:
+                    ps2.prev()
+                if event.key == pygame.K_RETURN:
+                    run = True
+                if event.key == pygame.K_RIGHT:
+                    ps2.next()
+                if event.key == pygame.K_RETURN:
+                    run = True
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
@@ -95,6 +103,7 @@ while True:
         clock.tick(60)
 
     kind1 = ps1.select()
+    kind2 = ps2.select()
     all.empty()
         
     BackGround("images/Screens/3dbg.png", size)
@@ -102,9 +111,12 @@ while True:
     level = Level(size, 50)
     level.loadLevel("1")
     
-    player = PlayerBall([width/2, height/2], kind1)
+    player1 = PlayerBall([width/2, height/2], kind1)
     print players.sprites()
-    print player.groups()
+    print player1.groups()
+    player2 = PlayerBall([width/2, height/2], kind2)
+    print players.sprites()
+    print player2.groups()
     timer = Score([80, height - 25], "Time: ", 36)
     timerWait = 0
     timerWaitMax = 6
@@ -115,14 +127,22 @@ while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w or event.key == pygame.K_UP:
-                    player.go("up")
-                if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
-                    player.go("right")
-                if event.key == pygame.K_s or event.key == pygame.K_DOWN:
-                    player.go("down")
-                if event.key == pygame.K_a or event.key == pygame.K_LEFT:
-                    player.go("left")
+                if event.key == pygame.K_w:
+                    player1.go("up")
+                if event.key == pygame.K_d:
+                    player1.go("right")
+                if event.key == pygame.K_s:
+                    player1.go("down")
+                if event.key == pygame.K_a:
+                    player1.go("left")
+                if event.key == pygame.K_UP:
+                    player2.go("up")
+                if event.key == pygame.K_RIGHT:
+                    player2.go("right")
+                if event.key == pygame.K_DOWN:
+                    player2.go("down")
+                if event.key == pygame.K_LEFT:
+                    player2.go("left")
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_w or event.key == pygame.K_UP:
                     player.go("stop up")
