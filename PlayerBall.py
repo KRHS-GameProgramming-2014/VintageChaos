@@ -152,4 +152,12 @@ class PlayerBall(pygame.sprite.Sprite):
         elif direction == "stop left":
             self.speedx = 0
             
+	def attack(self, atk):
+		if atk == "Minigun" and self.MinigunCoolDown == 0:
+			self.shooting = True
+			#self.MinigunCoolDown = self.MinigunCoolDownMax
+			return [Bullet(self.rect.center, self.angle)]
+		
+		return []
+            
    

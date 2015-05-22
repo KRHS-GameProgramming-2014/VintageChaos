@@ -7,7 +7,11 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
+
 from PlayerSelect import PlayerSelect
+
+
+
 
 pygame.init()
 
@@ -45,6 +49,7 @@ Score.containers = (all, hudItems)
 
 run = False
 
+
 BackGround("Images/mmscreens/vbg.png", size)
 
 startButton = Button([width/2, height-580], 
@@ -55,6 +60,12 @@ ps2 = PlayerSelect([width-(width/7), height-580])
                      
 kind1 = ""
 kind2 = ""
+
+startButton = Button([width/2, height-580], 
+                     "images/Buttons/StartButton.png",
+                     "images/Buttons/StartButtonC.png")
+kind = ""
+
 
 while True:
     while not run:
@@ -134,7 +145,7 @@ while True:
         playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
         ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
         playersHitBlocks = pygame.sprite.groupcollide(players, blocks, False, False)
-        
+   #Its not dirty I swear     
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
                 score.increaseScore(1)
