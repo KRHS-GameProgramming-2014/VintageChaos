@@ -76,6 +76,10 @@ while True:
                     ps1.prev()
                 if event.key == pygame.K_RETURN:
                     run = True
+                if event.key == pygame.K_d:
+                    ps1.next()
+                if event.key == pygame.K_RETURN:
+                    run = True
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
