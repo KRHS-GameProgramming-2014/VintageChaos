@@ -106,7 +106,7 @@ while True:
     kind2 = ps2.select()
     all.empty()
         
-    BackGround("images/Screens/Main Screen.png", size)
+    BackGround("images/Screens/3dbg.png", size)
     
     level = Level(size, 50)
     level.loadLevel("1")
