@@ -9,7 +9,7 @@ class PlayerBall(pygame.sprite.Sprite):
         # 'M' : Medic
         # 'P' : Pablo
         print kind
-        basePath = "players/"
+        basePath = "enemys/players/"
         #                                                       action|Frame|Direction
         self.walkUpImages = [pygame.image.load(basePath + kind + "w" + "0" + "w" + ".png"),
                          pygame.image.load(basePath + kind + "w" + "1" + "w" + ".png"),
