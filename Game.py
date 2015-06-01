@@ -160,8 +160,7 @@ while True:
                     player2.go("stop down")
                 if event.key == pygame.K_LEFT:
                     player2.go("stop left")
-            
-        if len(balls) < 10:
+                                           
             if random.randint(0, 1*60) == 0:
                 Ball("enemys/Ba.png",
                           [random.randint(0,10), random.randint(0,10)],
