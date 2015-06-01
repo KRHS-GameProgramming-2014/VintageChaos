@@ -7,9 +7,8 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
-
 from PlayerSelect import PlayerSelect
-
+from TileSelect import TileSelect
 
 
 
@@ -43,6 +42,7 @@ BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Button.containers = (all, menuItems)
 PlayerSelect.containers = (all, menuItems)
+TileSelect.containers = (all, menuItems)
 Score.containers = (all, hudItems)
 
 
@@ -64,6 +64,8 @@ kind2 = ""
 startButton = Button([width/2, height-580], 
                      "images/Buttons/StartButton.png",
                      "images/Buttons/StartButtonC.png")
+tile = TileSelect([width/7, height-200])\
+
 kind = ""
 
 
@@ -93,8 +95,13 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     run = True
-                    
-                    
+            
+            if event.type == pygame.QUIT: sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    tile1.next()
+                        
+                        
         all.update(width, height)
         
         dirty = all.draw(screen)
