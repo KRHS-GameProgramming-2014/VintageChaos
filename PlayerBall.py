@@ -57,6 +57,7 @@ class PlayerBall(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
         self.speed = [self.speedx, self.speedy]
+        self.moving = False
             
     def update(*args):
         self = args[0]
@@ -89,6 +90,7 @@ class PlayerBall(pygame.sprite.Sprite):
         self.move()
         self.speedx = 0
         self.speedy = 0
+    
     def collideWall(self, width, height):
         if not self.didBounceX:
             #print "trying to hit Wall"
@@ -103,61 +105,72 @@ class PlayerBall(pygame.sprite.Sprite):
                 #print "hit xWall"
     
     def animate(self):
-        if self.waitCount < self.maxWait:
-            self.waitCount += 1
-        else:
-            self.waitCount = 0
-            self.changed = True
-            if self.frame < self.maxFrame:
-                self.frame += 1
+        if self.moving:
+            if self.waitCount < self.maxWait:
+                self.waitCount += 1
             else:
-                self.frame = 0
-        
-        if self.changed:    
-            if self.facing == "up":
-                self.images = self.walkUpImages
-            elif self.facing == "down":
-                self.images = self.walkDownImages
-            elif self.facing == "right":
-                self.images = self.walkRightImages
-            elif self.facing == "left":
-                self.images = self.walkLeftImages
+                self.waitCount = 0
+                self.changed = True
+                if self.frame < self.maxFrame:
+                    self.frame += 1
+                else:
+                    self.frame = 0
             
+            if self.changed:    
+                if self.facing == "up":
+                    self.images = self.walkUpImages
+                elif self.facing == "down":
+                    self.images = self.walkDownImages
+                elif self.facing == "right":
+                    self.images = self.walkRightImages
+                elif self.facing == "left":
+                    self.images = self.walkLeftImages
+                
+                self.image = self.images[self.frame]
+        else:
+            self.frame = 0
             self.image = self.images[self.frame]
     
     def go(self, direction):
         if direction == "up":
             self.facing = "up"
             self.changed = True
+            self.moving = True
             self.speedy = -self.maxSpeed
         elif direction == "stop up":
             self.speedy = 0
+            self.moving = False
         elif direction == "down":
             self.facing = "down"
             self.changed = True
+            self.moving = True
             self.speedy = self.maxSpeed
         elif direction == "stop down":
             self.speedy = 0
-            
+            self.moving = False
         if direction == "right":
             self.facing = "right"
             self.changed = True
+            self.moving = True
             self.speedx = self.maxSpeed
         elif direction == "stop right":
             self.speedx = 0
+            self.moving = False
         elif direction == "left":
             self.facing = "left"
             self.changed = True
+            self.moving = True
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
+            self.moving = False
             
-	def attack(self, atk):
-		if atk == "Minigun" and self.MinigunCoolDown == 0:
-			self.shooting = True
-			#self.MinigunCoolDown = self.MinigunCoolDownMax
-			return [Bullet(self.rect.center, self.angle)]
-		
-		return []
+    def attack(self, atk):
+        if atk == "Minigun" and self.MinigunCoolDown == 0:
+            self.shooting = True
+            #self.MinigunCoolDown = self.MinigunCoolDownMax
+            return [Bullet(self.rect.center, self.angle)]
+        
+        return []
             
    

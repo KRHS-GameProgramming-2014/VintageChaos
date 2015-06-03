@@ -7,9 +7,8 @@ from Button import Button
 from BackGround import BackGround
 from Level import Level
 from Block import Block
-
 from PlayerSelect import PlayerSelect
-
+from TileSelect import TileSelect
 
 
 
@@ -43,6 +42,7 @@ BackGround.containers = (all, backgrounds)
 Block.containers = (all, blocks)
 Button.containers = (all, menuItems)
 PlayerSelect.containers = (all, menuItems)
+TileSelect.containers = (all, menuItems)
 Score.containers = (all, hudItems)
 
 
@@ -60,10 +60,14 @@ ps2 = PlayerSelect([width-(width/7), height-580])
                      
 kind1 = ""
 kind2 = ""
+tileType = ""
 
 startButton = Button([width/2, height-580], 
                      "images/Buttons/StartButton.png",
                      "images/Buttons/StartButtonC.png")
+
+tile = TileSelect([width/4, height-300])\
+
 kind = ""
 
 
@@ -82,19 +86,18 @@ while True:
                     run = True
                 if event.key == pygame.K_LEFT:
                     ps2.prev()
-                if event.key == pygame.K_RETURN:
-                    run = True
                 if event.key == pygame.K_RIGHT:
                     ps2.next()
-                if event.key == pygame.K_RETURN:
-                    run = True
+                if event.key == pygame.K_SPACE:
+                    tile.next()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     run = True
-                    
-                    
+            
+                
+                        
         all.update(width, height)
         
         dirty = all.draw(screen)
@@ -104,12 +107,16 @@ while True:
 
     kind1 = ps1.select()
     kind2 = ps2.select()
+    tileType = tile.select()
     all.empty()
+    
+ 
+    
         
     BackGround("images/Screens/3dbg.png", size)
     
     level = Level(size, 50)
-    level.loadLevel("1")
+    level.loadLevel("1", tileType)
     
     player1 = PlayerBall([width/2, height/2], kind1)
     print players.sprites()
@@ -119,7 +126,7 @@ while True:
     print player2.groups()
     timer = Score([80, height - 25], "Time: ", 36)
     timerWait = 0
-    timerWaitMax = 6
+    timerWaitMax = 6 
 
     score = Score([width-80, height-25], "Score: ", 36)
     while run:
@@ -176,7 +183,7 @@ while True:
         playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
         ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
         playersHitBlocks = pygame.sprite.groupcollide(players, blocks, False, False)
-   #Its not dirty I swear     
+             
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
                 score.increaseScore(1)
