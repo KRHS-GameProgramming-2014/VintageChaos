@@ -9,14 +9,14 @@ from Level import Level
 from Block import Block
 from PlayerSelect import PlayerSelect
 from TileSelect import TileSelect
-
+from MapSelect import ScreenSelect
 
 
 pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 1000 
+width = 1000
 height = 700
 size = width, height
 
@@ -43,6 +43,7 @@ Block.containers = (all, blocks)
 Button.containers = (all, menuItems)
 PlayerSelect.containers = (all, menuItems)
 TileSelect.containers = (all, menuItems)
+ScreenSelect.containers = (all, menuItems)
 Score.containers = (all, hudItems)
 
 
@@ -52,21 +53,23 @@ run = False
 
 BackGround("Images/mmscreens/vbg.png", size)
 
-startButton = Button([width/2, height-580], 
+startButton = Button([width/2, height-580],
                      "images/Buttons/StartButton.png")
-                
+
 ps1 = PlayerSelect([width/7, height-580])
 ps2 = PlayerSelect([width-(width/7), height-580])
-                     
+
 kind1 = ""
 kind2 = ""
 tileType = ""
+cleanscreenType = ""
 
-startButton = Button([width/2, height-580], 
+startButton = Button([width/2, height-580],
                      "images/Buttons/StartButton.png",
                      "images/Buttons/StartButtonC.png")
 
-tile = TileSelect([width/4, height-300])\
+tile = TileSelect([width/4, height-300])
+cleanscreen = ScreenSelect([width/1.5, height-300])
 
 kind = ""
 
@@ -90,16 +93,18 @@ while True:
                     ps2.next()
                 if event.key == pygame.K_SPACE:
                     tile.next()
+                if event.key == pygame.K_m:
+                    cleanscreen.next()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     run = True
-            
-                
-                        
+
+
+
         all.update(width, height)
-        
+
         dirty = all.draw(screen)
         pygame.display.update(dirty)
         pygame.display.flip()
@@ -108,16 +113,16 @@ while True:
     kind1 = ps1.select()
     kind2 = ps2.select()
     tileType = tile.select()
+    cleanscreenType = cleanscreen.select()
     all.empty()
-    
- 
-    
-        
-    BackGround("images/Screens/3dbg.png", size)
-    
+
+
+
+
+    BackGround("images/Screens/"+cleanscreenType, size)
     level = Level(size, 50)
     level.loadLevel("1", tileType)
-    
+
     player1 = PlayerBall([width/2, height/2], kind1)
     print players.sprites()
     print player1.groups()
@@ -126,11 +131,11 @@ while True:
     print player2.groups()
     timer = Score([80, height - 25], "Time: ", 36)
     timerWait = 0
-    timerWaitMax = 6 
+    timerWaitMax = 6
 
     score = Score([width-80, height-25], "Score: ", 36)
     while run:
-        
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -167,38 +172,38 @@ while True:
                     player2.go("stop down")
                 if event.key == pygame.K_LEFT:
                     player2.go("stop left")
-                                           
+
             if random.randint(0, 1*60) == 0:
                 Ball("enemys/Ba.png",
                           [random.randint(0,10), random.randint(0,10)],
                           [random.randint(100, width-100), random.randint(100, height-100)])
-                          
-                          
+
+
         if timerWait < timerWaitMax:
             timerWait += 1
         else:
             timerWait = 0
             timer.increaseScore(.1)
-        
+
         playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
         ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
         playersHitBlocks = pygame.sprite.groupcollide(players, blocks, False, False)
-             
+
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
                 score.increaseScore(1)
-                
+
         for bully in ballsHitBalls:
             for victem in ballsHitBalls[bully]:
                 bully.collideBall(victem)
         for bully in playersHitBlocks:
             for victem in playersHitBlocks[bully]:
                 bully.collideBlock(victem)
-        
+
         all.update(width, height)
-        
+
         dirty = all.draw(screen)
         pygame.display.update(dirty)
         pygame.display.flip()
         clock.tick(60)
-        
+
