@@ -10,7 +10,7 @@ from Block import Block
 from PlayerSelect import PlayerSelect
 from TileSelect import TileSelect
 from MapSelect import ScreenSelect
-
+from Enemy import Enemy
 
 pygame.init()
 
@@ -34,6 +34,7 @@ hudItems = pygame.sprite.Group()
 backgrounds = pygame.sprite.Group()
 blocks = pygame.sprite.Group()
 menuItems = pygame.sprite.Group()
+enemies = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 
 Ball.containers = (all, balls)
@@ -45,7 +46,7 @@ PlayerSelect.containers = (all, menuItems)
 TileSelect.containers = (all, menuItems)
 ScreenSelect.containers = (all, menuItems)
 Score.containers = (all, hudItems)
-
+Enemy.containers = (all, enemies)
 
 
 run = False
@@ -173,10 +174,8 @@ while True:
                 if event.key == pygame.K_LEFT:
                     player2.go("stop left")
 
-            if random.randint(0, 1*60) == 0:
-                Ball("enemys/Ba.png",
-                          [random.randint(0,10), random.randint(0,10)],
-                          [random.randint(100, width-100), random.randint(100, height-100)])
+        if random.randint(0, 1*60) == 0:
+            Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
 
 
         if timerWait < timerWaitMax:

@@ -59,6 +59,7 @@ class PlayerBall(pygame.sprite.Sprite):
         self.speed = [self.speedx, self.speedy]
         self.moving = False
             
+            
     def update(*args):
         self = args[0]
         width = args[1]
