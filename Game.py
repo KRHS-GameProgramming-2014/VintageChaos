@@ -23,9 +23,12 @@ size = width, height
 
 bgColor = r,g,b = 0, 0, 10
 
-pygame.display.set_caption("Vintage Chaos")
+pygame.display.set_caption("Chaos of the Vintage Variety")
 
 screen = pygame.display.set_mode(size)
+
+pygame.mixer.music.load("music/music.mp3")
+pygame.mixer.music.play(-1, 0.0)
 
 
 balls = pygame.sprite.Group()
@@ -73,6 +76,8 @@ tile = TileSelect([width/4, height-300])
 cleanscreen = ScreenSelect([width/1.5, height-300])
 
 kind = ""
+
+
 
 
 while True:
@@ -134,7 +139,12 @@ while True:
     timerWait = 0
     timerWaitMax = 6
 
-    score = Score([width-80, height-25], "Score: ", 36)
+
+
+    
+
+    
+    
     while run:
 
         for event in pygame.event.get():
@@ -190,19 +200,22 @@ while True:
 
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
-                score.increaseScore(1)
 
-        for bully in ballsHitBalls:
-            for victem in ballsHitBalls[bully]:
-                bully.collideBall(victem)
-        for bully in playersHitBlocks:
-            for victem in playersHitBlocks[bully]:
-                bully.collideBlock(victem)
+            
+
+                for bully in ballsHitBalls:
+                    for victem in ballsHitBalls[bully]:
+                        bully.collideBall(victem)
+                for bully in playersHitBlocks:
+                    for victem in playersHitBlocks[bully]:
+                        bully.collideBlock(victem)
 
         all.update(width, height)
 
         dirty = all.draw(screen)
         pygame.display.update(dirty)
         pygame.display.flip()
+
+
         clock.tick(60)
 
