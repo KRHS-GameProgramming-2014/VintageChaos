@@ -200,15 +200,13 @@ while True:
 
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
-
-            
-
-                for bully in ballsHitBalls:
-                    for victem in ballsHitBalls[bully]:
-                        bully.collideBall(victem)
-                for bully in playersHitBlocks:
-                    for victem in playersHitBlocks[bully]:
-                        bully.collideBlock(victem)
+				players.CollideWall
+	for bully in ballsHitBalls:
+		for victem in ballsHitBalls[bully]:
+			bully.collideBall(victem)
+	for bully in playersHitBlocks:
+		for victem in playersHitBlocks[bully]:
+			bully.collideBlock(victem)
 
         all.update(width, height)
 
