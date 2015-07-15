@@ -11,6 +11,8 @@ from PlayerSelect import PlayerSelect
 from TileSelect import TileSelect
 from MapSelect import ScreenSelect
 from Enemy import Enemy
+from Bullet import Bullet
+
 
 pygame.init()
 
@@ -27,8 +29,8 @@ pygame.display.set_caption("Chaos of the Vintage Variety")
 
 screen = pygame.display.set_mode(size)
 
-pygame.mixer.music.load("music/music.mp3")
-pygame.mixer.music.play(-1, 0.0)
+#pygame.mixer.music.load("music/music.mp3")
+#pygame.mixer.music.play(-1, 0.0)
 
 
 balls = pygame.sprite.Group()
@@ -39,6 +41,7 @@ blocks = pygame.sprite.Group()
 menuItems = pygame.sprite.Group()
 enemies = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
+projectiles = pygame.sprite.Group()
 
 Ball.containers = (all, balls)
 PlayerBall.containers = (all, players)
@@ -50,6 +53,7 @@ TileSelect.containers = (all, menuItems)
 ScreenSelect.containers = (all, menuItems)
 Score.containers = (all, hudItems)
 Enemy.containers = (all, enemies)
+Bullet.containers = (all, projectiles)
 
 
 run = False
@@ -71,6 +75,10 @@ cleanscreenType = ""
 startButton = Button([width/2, height-580],
                      "images/Buttons/StartButton.png",
                      "images/Buttons/StartButtonC.png")
+                     
+quitButton = Button([width/1.32, height-75.5],
+					"images/Buttons/QButton.png",
+					"images/Buttons/QButtonC.png")
 
 tile = TileSelect([width/4, height-300])
 cleanscreen = ScreenSelect([width/1.5, height-300])
@@ -101,11 +109,27 @@ while True:
                     tile.next()
                 if event.key == pygame.K_m:
                     cleanscreen.next()
+                if event.key == pygame.K_r:
+					playe1.go("attack")
+					if event.key == pygame.K_t:
+						player2.go("attack")
+                
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     run = True
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                quitButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if quitButton.release(event.pos):
+                     pygame.quit()
+                     sys.exit()
+                     
+                     
+
+                    
 
 
 
@@ -115,6 +139,7 @@ while True:
         pygame.display.update(dirty)
         pygame.display.flip()
         clock.tick(60)
+        
 
     kind1 = ps1.select()
     kind2 = ps2.select()
@@ -183,6 +208,8 @@ while True:
                     player2.go("stop down")
                 if event.key == pygame.K_LEFT:
                     player2.go("stop left")
+                    
+                    
 
         if random.randint(0, 1*60) == 0:
             Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
@@ -197,16 +224,23 @@ while True:
         playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
         ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
         playersHitBlocks = pygame.sprite.groupcollide(players, blocks, False, False)
+        projectilesHitEnemies = pygame.sprite.groupcollide(projectiles, enemies, True, True)
 
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
 				players.CollideWall
+	
 	for bully in ballsHitBalls:
 		for victem in ballsHitBalls[bully]:
 			bully.collideBall(victem)
+	
 	for bully in playersHitBlocks:
 		for victem in playersHitBlocks[bully]:
 			bully.collideBlock(victem)
+	
+	for bully in projectilesHitEnemies:
+		for victem in projectilesHitEnemies[bully]:
+			bully.collideBall(victem)
 
         all.update(width, height)
 

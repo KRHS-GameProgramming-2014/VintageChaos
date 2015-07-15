@@ -9,7 +9,7 @@ class PlayerBall(pygame.sprite.Sprite):
         # 'M' : Medic
         # 'P' : Pablo
         print kind
-        basePath = "enemys/players/"
+        basePath = "enemies/players/"
         #                                                       action|Frame|Direction
         self.walkUpImages = [pygame.image.load(basePath + kind + "w" + "0" + "w" + ".png"),
                          pygame.image.load(basePath + kind + "w" + "1" + "w" + ".png"),
@@ -43,7 +43,9 @@ class PlayerBall(pygame.sprite.Sprite):
                          pygame.image.load(basePath + kind + "w" + "5" + "a" + ".png"),
                          pygame.image.load(basePath + kind + "w" + "6" + "a" + ".png"),
                          pygame.image.load(basePath + kind + "w" + "7" + "a" + ".png")]
+        self.shoot = [pygame.image.load("players/Ha2a.png")]
 
+        
         self.facing = "up"
         self.changed = False
         self.images = self.walkUpImages
@@ -58,6 +60,7 @@ class PlayerBall(pygame.sprite.Sprite):
         self.speedy = 0
         self.speed = [self.speedx, self.speedy]
         self.moving = False
+        self.attacking = False
             
             
     def update(*args):
