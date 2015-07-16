@@ -24,6 +24,13 @@ class ScreenSelect(pygame.sprite.Sprite):
             self.frame = 0
         self.image = self.images[self.frame]
         
+    def prev(self):
+        if self.frame > 0:
+            self.frame -= 1
+        else:
+            self.frame = 2
+        self.image = self.images[self.frame]
+        
    
     
     def select(self):
