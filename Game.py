@@ -77,8 +77,22 @@ startButton = Button([width/2, height-580],
                      "images/Buttons/StartButtonC.png")
                      
 quitButton = Button([width/1.32, height-75.5],
-					"images/Buttons/QButton.png",
-					"images/Buttons/QButtonC.png")
+                    "images/Buttons/QButton.png",
+                    "images/Buttons/QButtonC.png")
+                    
+playeroneleftButton = Button([width/25, height-600.5],
+                    "images/Buttons/ArrowL.png")
+
+playeronerightButton = Button([width/4, height-600.5],
+                    "images/Buttons/ArrowR.png")
+
+playertwoleftButton = Button([width/1.35, height-600.5],
+                    "images/Buttons/ArrowL.png")
+                    
+playertworightButton = Button([width/1.05, height-600.5],
+					"images/Buttons/ArrowR.png")
+
+
 
 tile = TileSelect([width/4, height-300])
 cleanscreen = ScreenSelect([width/1.5, height-300])
@@ -110,9 +124,9 @@ while True:
                 if event.key == pygame.K_m:
                     cleanscreen.next()
                 if event.key == pygame.K_r:
-					playe1.go("attack")
-					if event.key == pygame.K_t:
-						player2.go("attack")
+                    player1.go("attack")
+                    if event.key == pygame.K_t:
+                        player2.go("attack")
                 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton.click(event.pos)
@@ -127,8 +141,30 @@ while True:
                      pygame.quit()
                      sys.exit()
                      
-                     
-
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                playeroneleftButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if playeroneleftButton.release(event.pos):         
+                    ps1.prev()
+                    
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                playeronerightButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if playeronerightButton.release(event.pos):
+                    ps1.next()
+                    
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                playertwoleftButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if playertwoleftButton.release(event.pos):         
+                    ps2.prev() 
+                   
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                playertworightButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if playertworightButton.release(event.pos):         
+                    ps2.next()        
+                    
                     
 
 
@@ -228,19 +264,19 @@ while True:
 
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
-				players.CollideWall
-	
-	for bully in ballsHitBalls:
-		for victem in ballsHitBalls[bully]:
-			bully.collideBall(victem)
-	
-	for bully in playersHitBlocks:
-		for victem in playersHitBlocks[bully]:
-			bully.collideBlock(victem)
-	
-	for bully in projectilesHitEnemies:
-		for victem in projectilesHitEnemies[bully]:
-			bully.collideBall(victem)
+                players.CollideWall
+    
+    for bully in ballsHitBalls:
+        for victem in ballsHitBalls[bully]:
+            bully.collideBall(victem)
+    
+    for bully in playersHitBlocks:
+        for victem in playersHitBlocks[bully]:
+            bully.collideBlock(victem)
+    
+    for bully in projectilesHitEnemies:
+        for victem in projectilesHitEnemies[bully]:
+            bully.collideBall(victem)
 
         all.update(width, height)
 
