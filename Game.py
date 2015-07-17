@@ -62,7 +62,7 @@ run = False
 BackGround("Images/mmscreens/vbg.png", size)
 
 startButton = Button([width/2, height-580],
-                     "images/Buttons/StartButton.png")
+                     "Images/Buttons/StartButton.png")
 
 ps1 = PlayerSelect([width/7, height-580])
 ps2 = PlayerSelect([width-(width/7), height-580])
@@ -73,36 +73,36 @@ tileType = ""
 cleanscreenType = ""
 
 startButton = Button([width/2, height-580],
-                     "images/Buttons/StartButton.png",
-                     "images/Buttons/StartButtonC.png")
+                     "Images/Buttons/StartButton.png",
+                     "Images/Buttons/StartButtonC.png")
                      
 quitButton = Button([width/1.32, height-75.5],
-                    "images/Buttons/QButton.png",
-                    "images/Buttons/QButtonC.png")
+                    "Images/Buttons/QButton.PNG",
+                    "Images/Buttons/QButtonC.PNG")
                     
 playeroneleftButton = Button([width/25, height-600.5],
-                    "images/Buttons/ArrowL.png")
+                    "Arrow Buttons/ArrowL.PNG")
 
 playeronerightButton = Button([width/4, height-600.5],
-                    "images/Buttons/ArrowR.png")
+                    "Arrow Buttons/ArrowR.PNG")
 
 playertwoleftButton = Button([width/1.35, height-600.5],
-                    "images/Buttons/ArrowL.png")
+                    "Arrow Buttons/ArrowL.PNG")
                     
 playertworightButton = Button([width/1.05, height-600.5],
-                    "images/Buttons/ArrowR.png")
+                    "Arrow Buttons/ArrowR.PNG")
                     
 tileselectleftButton = Button([width/20, height-300],
-                    "images/Buttons/ArrowLC.png")
+                    "Arrow Buttons/ArrowLC.PNG")
                     
 tileselectrightButton = Button([width/2.3, height-300],
-                    "images/Buttons/ArrowRC.png")
+                    "Arrow Buttons/ArrowRC.PNG")
                     
 mapselectleftButton = Button([width/1.85, height-300],
-					"images/Buttons/ArrowLC.png")
+					"Arrow Buttons/ArrowLC.PNG")
 					
 mapselectrightButton = Button([width/1.05, height-300],
-					"images/Buttons/ArrowRC.png")
+					"Arrow Buttons/ArrowRC.PNG")
 
 
 
@@ -225,7 +225,7 @@ while True:
 
 
 
-    BackGround("images/Screens/"+cleanscreenType, size)
+    BackGround("Images/Screens/"+cleanscreenType, size)
     level = Level(size, 50)
     level.loadLevel("1", tileType)
 

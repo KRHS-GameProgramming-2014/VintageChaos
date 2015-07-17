@@ -9,40 +9,40 @@ class PlayerBall(pygame.sprite.Sprite):
         # 'M' : Medic
         # 'P' : Pablo
         print kind
-        basePath = "enemies/players/"
+        basePath = "players/"
         #                                                       action|Frame|Direction
-        self.walkUpImages = [pygame.image.load(basePath + kind + "w" + "0" + "w" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "1" + "w" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "2" + "w" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "3" + "w" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "4" + "w" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "5" + "w" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "6" + "w" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "7" + "w" + ".png")]
-        self.walkDownImages = [pygame.image.load(basePath + kind + "w" + "0" + "s" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "1" + "s" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "2" + "s" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "3" + "s" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "4" + "s" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "5" + "s" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "6" + "s" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "7" + "s" + ".png")]
-        self.walkRightImages = [pygame.image.load(basePath + kind + "w" + "0" + "d" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "1" + "d" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "2" + "d" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "3" + "d" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "4" + "d" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "5" + "d" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "6" + "d" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "7" + "d" + ".png")]
-        self.walkLeftImages = [pygame.image.load(basePath + kind + "w" + "0" + "a" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "1" + "a" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "2" + "a" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "3" + "a" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "4" + "a" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "5" + "a" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "6" + "a" + ".png"),
-                         pygame.image.load(basePath + kind + "w" + "7" + "a" + ".png")]
+        self.walkUpImages = [pygame.image.load(basePath + kind + "w" + "0" + "w" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "1" + "w" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "2" + "w" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "3" + "w" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "4" + "w" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "5" + "w" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "6" + "w" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "7" + "w" + ".PNG")]
+        self.walkDownImages = [pygame.image.load(basePath + kind + "w" + "0" + "s" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "1" + "s" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "2" + "s" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "3" + "s" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "4" + "s" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "5" + "s" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "6" + "s" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "7" + "s" + ".PNG")]
+        self.walkRightImages = [pygame.image.load(basePath + kind + "w" + "0" + "d" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "1" + "d" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "2" + "d" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "3" + "d" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "4" + "d" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "5" + "d" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "6" + "d" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "7" + "d" + ".PNG")]
+        self.walkLeftImages = [pygame.image.load(basePath + kind + "w" + "0" + "a" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "1" + "a" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "2" + "a" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "3" + "a" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "4" + "a" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "5" + "a" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "6" + "a" + ".PNG"),
+                         pygame.image.load(basePath + kind + "w" + "7" + "a" + ".PNG")]
         self.shoot = [pygame.image.load("players/Ha2a.png")]
 
         

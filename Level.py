@@ -32,7 +32,7 @@ class Level():
             for x, c in enumerate(line):
                 if c == "#":
                     print "????"
-                    Block("maps/images/tiles/"+kind+".png", 
+                    Block("Images/tiles/"+kind+".png", 
                           [x*self.blockSize,y*self.blockSize],
                           self.blockSize)
             
