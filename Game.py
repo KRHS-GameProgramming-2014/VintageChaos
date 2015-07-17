@@ -77,32 +77,32 @@ startButton = Button([width/2, height-580],
                      "Images/Buttons/StartButtonC.png")
                      
 quitButton = Button([width/1.32, height-75.5],
-                    "Images/Buttons/QButton.PNG",
-                    "Images/Buttons/QButtonC.PNG")
+                    "Images/Buttons/QButton.png",
+                    "Images/Buttons/QButtonC.png")
                     
 playeroneleftButton = Button([width/25, height-600.5],
-                    "Arrow Buttons/ArrowL.PNG")
+                    "Arrow Buttons/ArrowL.png")
 
 playeronerightButton = Button([width/4, height-600.5],
-                    "Arrow Buttons/ArrowR.PNG")
+                    "Arrow Buttons/ArrowR.png")
 
 playertwoleftButton = Button([width/1.35, height-600.5],
-                    "Arrow Buttons/ArrowL.PNG")
+                    "Arrow Buttons/ArrowL.png")
                     
 playertworightButton = Button([width/1.05, height-600.5],
-                    "Arrow Buttons/ArrowR.PNG")
+                    "Arrow Buttons/ArrowR.png")
                     
 tileselectleftButton = Button([width/20, height-300],
-                    "Arrow Buttons/ArrowLC.PNG")
+                    "Arrow Buttons/ArrowLC.png")
                     
 tileselectrightButton = Button([width/2.3, height-300],
-                    "Arrow Buttons/ArrowRC.PNG")
+                    "Arrow Buttons/ArrowRC.png")
                     
 mapselectleftButton = Button([width/1.85, height-300],
-					"Arrow Buttons/ArrowLC.PNG")
+					"Arrow Buttons/ArrowLC.png")
 					
 mapselectrightButton = Button([width/1.05, height-300],
-					"Arrow Buttons/ArrowRC.PNG")
+					"Arrow Buttons/ArrowRC.png")
 
 
 
