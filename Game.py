@@ -12,7 +12,7 @@ from TileSelect import TileSelect
 from MapSelect import ScreenSelect
 from Enemy import Enemy
 from Bullet import Bullet
-from Cursor import Pointer
+#from Cursor import Pointer
 
 
 
@@ -44,7 +44,7 @@ menuItems = pygame.sprite.Group()
 enemies = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 projectiles = pygame.sprite.Group()
-pointers = pygame.sprite.Group()
+#pointers = pygame.sprite.Group()
 
 Ball.containers = (all, balls)
 PlayerBall.containers = (all, players)
@@ -57,7 +57,7 @@ ScreenSelect.containers = (all, menuItems)
 Score.containers = (all, hudItems)
 Enemy.containers = (all, enemies)
 Bullet.containers = (all, projectiles)
-Pointer.containers = (all, pointers)
+#Pointer.containers = (all, pointers)
 
 
 run = False
@@ -111,9 +111,9 @@ mapselectleftButton = Button([width/1.85, height-300],
 mapselectrightButton = Button([width/1.05, height-300],
                     "Arrow Buttons/ArrowRC.png")
                 
-optionsButton = Button([width/4, height-77],
-                    "Images/Buttons/OptionsButton.png",
-                    "Images/Buttons/OptionsButtonC.png")
+#optionsButton = Button([width/4, height-77],
+#                    "Images/Buttons/OptionsButton.png",
+#                    "Images/Buttons/OptionsButtonC.png")
                     
 
 
@@ -157,70 +157,42 @@ while True:
                 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton.click(event.pos)
+                quitButton.click(event.pos)
+                playeroneleftButton.click(event.pos)
+                playeronerightButton.click(event.pos)
+                playertwoleftButton.click(event.pos)
+                playertworightButton.click(event.pos)
+                tileselectleftButton.click(event.pos)
+                tileselectrightButton.click(event.pos)
+                mapselectrightButton.click(event.pos
+                optionsButton.click(event.pos) #all MOUSEBUTTONDOWN should be in the same block
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
-					
-                    
-			if event.type == pygame.MOUSEBUTTONDOWN:
-				quitButton.click(event.pos)
-			if event.type == pygame.MOUSEBUTTONUP:
+#----------Here's your problem-----------------------
+#put start game code here!
+#----------------------------------------------------
 				if quitButton.release(event.pos):
 					pygame.quit()
 					sys.exit()
-                     
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                playeroneleftButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
                 if playeroneleftButton.release(event.pos):         
                     ps1.prev()
-                    
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                playeronerightButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
                 if playeronerightButton.release(event.pos):
                     ps1.next()
-                    
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                playertwoleftButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
                 if playertwoleftButton.release(event.pos):         
                     ps2.prev() 
-                   
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                playertworightButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
                 if playertworightButton.release(event.pos):         
                     ps2.next()    
-                    
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                tileselectleftButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
                 if tileselectleftButton.release(event.pos):         
                     tile.prev()   
-                    
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                tileselectrightButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
                 if tileselectrightButton.release(event.pos):         
                     tile.next() 
-                    
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mapselectleftButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
                 if mapselectleftButton.release(event.pos):         
                     cleanscreen.prev()
-            
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mapselectrightButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
-                if mapselectrightButton.release(event.pos):         
+                if mapselectrightButton.release(event.pos):  
                     cleanscreen.next()
-                    
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                optionsButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
                 if optionsButton.release(event.pos):
                         pygame.display("Images/Screens/temporaryOptionsScreen.png")
+                    
                     
                             
                     
@@ -234,7 +206,7 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    Pointer("Cursors/RedCursor.png")
+    #Pointer("Cursors/RedCursor.png")
     pygame.mouse.set_visible(True)
         
 
