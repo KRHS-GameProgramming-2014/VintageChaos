@@ -12,6 +12,8 @@ from TileSelect import TileSelect
 from MapSelect import ScreenSelect
 from Enemy import Enemy
 from Bullet import Bullet
+from Cursor import Pointer
+
 
 
 pygame.init()
@@ -29,7 +31,7 @@ pygame.display.set_caption("Chaos of the Vintage Variety")
 
 screen = pygame.display.set_mode(size)
 
-#pygame.mixer.music.load("music/music.mp3")
+#pygame.mixer.music.load("music/floop.mp3")
 #pygame.mixer.music.play(-1, 0.0)
 
 
@@ -42,6 +44,7 @@ menuItems = pygame.sprite.Group()
 enemies = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 projectiles = pygame.sprite.Group()
+pointers = pygame.sprite.Group()
 
 Ball.containers = (all, balls)
 PlayerBall.containers = (all, players)
@@ -54,6 +57,7 @@ ScreenSelect.containers = (all, menuItems)
 Score.containers = (all, hudItems)
 Enemy.containers = (all, enemies)
 Bullet.containers = (all, projectiles)
+Pointer.containers = (all, pointers)
 
 
 run = False
@@ -66,6 +70,8 @@ startButton = Button([width/2, height-580],
 
 ps1 = PlayerSelect([width/7, height-580])
 ps2 = PlayerSelect([width-(width/7), height-580])
+
+
 
 kind1 = ""
 kind2 = ""
@@ -99,10 +105,17 @@ tileselectrightButton = Button([width/2.3, height-300],
                     "Arrow Buttons/ArrowRC.png")
                     
 mapselectleftButton = Button([width/1.85, height-300],
-					"Arrow Buttons/ArrowLC.png")
-					
+
+                    "Arrow Buttons/ArrowLC.png")
+                    
 mapselectrightButton = Button([width/1.05, height-300],
-					"Arrow Buttons/ArrowRC.png")
+                    "Arrow Buttons/ArrowRC.png")
+                
+optionsButton = Button([width/4, height-77],
+                    "Images/Buttons/OptionsButton.png",
+                    "Images/Buttons/OptionsButtonC.png")
+                    
+
 
 
 
@@ -119,14 +132,12 @@ while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    run = True
                 if event.key == pygame.K_a:
                     ps1.prev()
-                if event.key == pygame.K_RETURN:
-                    run = True
                 if event.key == pygame.K_d:
                     ps1.next()
-                if event.key == pygame.K_RETURN:
-                    run = True
                 if event.key == pygame.K_LEFT:
                     ps2.prev()
                 if event.key == pygame.K_RIGHT:
@@ -137,8 +148,8 @@ while True:
                     tile.prev()
                 if event.key == pygame.K_m:
                     cleanscreen.next()
-                if even.key == pygame.K_o:
-					cleanscreen.prev()
+                if event.key == pygame.K_o:
+                    cleanscreen.prev()
                 if event.key == pygame.K_r:
                     player1.go("attack")
                     if event.key == pygame.K_t:
@@ -148,14 +159,14 @@ while True:
                 startButton.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
-                    run = True
-            
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                quitButton.click(event.pos)
-            if event.type == pygame.MOUSEBUTTONUP:
-                if quitButton.release(event.pos):
-                     pygame.quit()
-                     sys.exit()
+					
+                    
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				quitButton.click(event.pos)
+			if event.type == pygame.MOUSEBUTTONUP:
+				if quitButton.release(event.pos):
+					pygame.quit()
+					sys.exit()
                      
             if event.type == pygame.MOUSEBUTTONDOWN:
                 playeroneleftButton.click(event.pos)
@@ -203,7 +214,15 @@ while True:
                 mapselectrightButton.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
                 if mapselectrightButton.release(event.pos):         
-                    cleanscreen.next()        
+                    cleanscreen.next()
+                    
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                optionsButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if optionsButton.release(event.pos):
+                        pygame.display("Images/Screens/temporaryOptionsScreen.png")
+                    
+                            
                     
 
 
@@ -215,12 +234,17 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
+    Pointer("Cursors/RedCursor.png")
+    pygame.mouse.set_visible(True)
+        
 
     kind1 = ps1.select()
     kind2 = ps2.select()
     tileType = tile.select()
     cleanscreenType = cleanscreen.select()
     all.empty()
+    
+
 
 
 
@@ -285,9 +309,13 @@ while True:
                     player2.go("stop left")
                     
                     
-
-        if random.randint(0, 1*60) == 0:
+    
+        if random.randint(0, 25*60) == 0:
             Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
+            
+            
+
+                              
 
 
         if timerWait < timerWaitMax:

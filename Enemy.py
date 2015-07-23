@@ -5,14 +5,14 @@ from Bullet import Bullet
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, pos = [300,400], size = [80,80], speed = [0,0]):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.images = [pygame.image.load("enemies/Ba1s.png"),
-                            pygame.image.load("enemies/Bd.png"),
-                            pygame.image.load("enemies/Bmw.png"),
-                            pygame.image.load("enemies/Bma.png")
+        self.images = [pygame.image.load("Images/enemies/Ba1s.png"),
+                            pygame.image.load("Images/enemies/Bma.png"),
+                            pygame.image.load("Images/enemies/Bmw.png"),
+                            pygame.image.load("Images/enemies/Bma.png")
                             ]
         self.changed = False
         self.speed = speed
-        self.stopImage = pygame.image.load("enemies/Ba1s.png")
+        self.stopImage = pygame.image.load("Images/enemies/Ba1s.png")
         self.frame = 0
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
