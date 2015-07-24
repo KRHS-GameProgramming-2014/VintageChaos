@@ -164,16 +164,16 @@ while True:
                 playertworightButton.click(event.pos)
                 tileselectleftButton.click(event.pos)
                 tileselectrightButton.click(event.pos)
-                mapselectrightButton.click(event.pos
-                optionsButton.click(event.pos) #all MOUSEBUTTONDOWN should be in the same block
+                mapselectrightButton.click(event.pos)
+                mapselectleftButton.click(event.pos)
+                #optionsButton.click(event.pos) #all MOUSEBUTTONDOWN should be in the same block
+            
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
-#----------Here's your problem-----------------------
-#put start game code here!
-#----------------------------------------------------
-				if quitButton.release(event.pos):
-					pygame.quit()
-					sys.exit()
+					run = True
+                if quitButton.release(event.pos):
+                    pygame.quit()
+                    sys.exit()
                 if playeroneleftButton.release(event.pos):         
                     ps1.prev()
                 if playeronerightButton.release(event.pos):
@@ -190,8 +190,8 @@ while True:
                     cleanscreen.prev()
                 if mapselectrightButton.release(event.pos):  
                     cleanscreen.next()
-                if optionsButton.release(event.pos):
-                        pygame.display("Images/Screens/temporaryOptionsScreen.png")
+                #if optionsButton.release(event.pos):
+                 #       pygame.display("Images/Screens/temporaryOptionsScreen.png")
                     
                     
                             
