@@ -242,7 +242,7 @@ while True:
     
     
     while run:
-
+        print "running"
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -280,16 +280,10 @@ while True:
                 if event.key == pygame.K_LEFT:
                     player2.go("stop left")
                     
-                    
-    
-        if random.randint(0, 25*60) == 0:
-            Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
-            
-            
-
-                              
-
-
+        #---------Enemies off until images fixed-----
+        #if random.randint(0, 25*60) == 0:
+            #Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
+        
         if timerWait < timerWaitMax:
             timerWait += 1
         else:
@@ -304,19 +298,21 @@ while True:
         for player in playersHitBalls:
             for ball in playersHitBalls[player]:
                 players.CollideWall
-    
-    for bully in ballsHitBalls:
-        for victem in ballsHitBalls[bully]:
-            bully.collideBall(victem)
-    
-    for bully in playersHitBlocks:
-        for victem in playersHitBlocks[bully]:
-            bully.collideBlock(victem)
-    
-    for bully in projectilesHitEnemies:
-        for victem in projectilesHitEnemies[bully]:
-            bully.collideBall(victem)
-
+        
+        #GOD DAMNED TAB ERROR....the bane of the python programmer
+        for bully in ballsHitBalls:
+            for victem in ballsHitBalls[bully]:
+                bully.collideBall(victem)
+        
+        for bully in playersHitBlocks:
+            for victem in playersHitBlocks[bully]:
+                bully.collideBlock(victem)
+        
+        for bully in projectilesHitEnemies:
+            for victem in projectilesHitEnemies[bully]:
+                bully.collideBall(victem)
+        
+        #ONE MORE TAB ERROR
         all.update(width, height)
 
         dirty = all.draw(screen)
