@@ -176,6 +176,7 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     run = True
+                    pygame.mouse.set_visible(False)
                 if quitButton.release(event.pos):
                     pygame.quit()
                     sys.exit()
@@ -212,7 +213,7 @@ while True:
         clock.tick(60)
         
     #Pointer("Cursors/RedCursor.png")
-    pygame.mouse.set_visible(True)
+    #pygame.mouse.set_visible(True)
         
 
     kind1 = ps1.select()
@@ -285,6 +286,8 @@ while True:
                     player2.go("stop down")
                 if event.key == pygame.K_LEFT:
                     player2.go("stop left")
+                
+					
                     
         #---------Enemies off until images fixed-----
         if random.randint(0, 25*60) == 0:
