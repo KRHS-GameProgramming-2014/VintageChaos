@@ -5,7 +5,9 @@ class TileSelect(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.images = [pygame.image.load("maps/Images/TileSelect/tile1s.png"),
                        pygame.image.load("maps/Images/TileSelect/tile2s.png"),
-                       pygame.image.load("maps/Images/TileSelect/tile3s.png")]
+                       pygame.image.load("maps/Images/TileSelect/tile3s.png"),
+                       pygame.image.load("maps/Images/TileSelect/tile4s.png"),
+                       pygame.image.load("maps/Images/TileSelect/tile5s.png")]
         self.frame = 0
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
@@ -18,7 +20,7 @@ class TileSelect(pygame.sprite.Sprite):
         pass
         
     def next(self):
-        if self.frame < 2:
+        if self.frame < 4:
             self.frame += 1
         else:
             self.frame = 0
@@ -28,7 +30,7 @@ class TileSelect(pygame.sprite.Sprite):
         if self.frame > 0:
             self.frame -= 1
         else:
-            self.frame = 2
+            self.frame = 4
         self.image = self.images[self.frame]
     
     def select(self):
@@ -38,3 +40,7 @@ class TileSelect(pygame.sprite.Sprite):
             return "Tile2"
         if self.frame == 2:
             return "Tile3"
+        if self.frame == 3:
+            return "Tile4"
+        if self.frame == 4:
+            return "Tile5"

@@ -170,7 +170,7 @@ while True:
             
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
-					run = True
+                    run = True
                 if quitButton.release(event.pos):
                     pygame.quit()
                     sys.exit()
