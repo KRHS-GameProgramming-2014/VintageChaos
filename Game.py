@@ -63,7 +63,11 @@ Bullet.containers = (all, projectiles)
 run = False
 
 
+
+
 BackGround("Images/mmscreens/vbg.png", size)
+
+pygame.mouse.set_cursor(*pygame.cursors.diamond)
 
 startButton = Button([width/2, height-580],
                      "Images/Buttons/StartButton.png")
@@ -112,8 +116,8 @@ mapselectrightButton = Button([width/1.05, height-300],
                     "Arrow Buttons/ArrowRC.png")
                 
 #optionsButton = Button([width/4, height-77],
-#                    "Images/Buttons/OptionsButton.png",
-#                    "Images/Buttons/OptionsButtonC.png")
+#                  "Images/Buttons/OptionsButton.png",
+#                   "Images/Buttons/OptionsButtonC.png")
                     
 
 
@@ -121,6 +125,7 @@ mapselectrightButton = Button([width/1.05, height-300],
 
 tile = TileSelect([width/4, height-300])
 cleanscreen = ScreenSelect([width/1.35, height-300])
+
 
 kind = ""
 
@@ -191,7 +196,7 @@ while True:
                 if mapselectrightButton.release(event.pos):  
                     cleanscreen.next()
                 #if optionsButton.release(event.pos):
-                 #       pygame.display("Images/Screens/temporaryOptionsScreen.png")
+                #    pygame.image.load("Images/Screens/temporaryOptionsScreen.png") 
                     
                     
                             
@@ -236,7 +241,8 @@ while True:
     timerWaitMax = 6
 
 
-
+    score1 = Score([width-220,height-25], "Player 1:", 36)
+    score2 = Score([width-80,height-25], "Player 2:", 36)
     
 
     
@@ -281,8 +287,8 @@ while True:
                     player2.go("stop left")
                     
         #---------Enemies off until images fixed-----
-        #if random.randint(0, 25*60) == 0:
-            #Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
+        if random.randint(0, 25*60) == 0:
+            Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
         
         if timerWait < timerWaitMax:
             timerWait += 1

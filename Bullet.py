@@ -19,6 +19,10 @@ class Bullet(pygame.sprite.Sprite):
             self.speedx = self.maxSpeed
             self.speedy = 2
         self.speed = [self.speedx, self.speedy]
+        self.place(pos)
+        self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
+        self.damage = 1
+        self.living = True
                    
 
     def update(*args):
