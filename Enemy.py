@@ -3,9 +3,9 @@ from Bullet import Bullet
 
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, pos = [300,400], size = [80,80], speed = [0,0]):
+    def __init__(self, pos = [100,400], size = [80,80], speed = [0,0]):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.Upimages = [pygame.image.load("Images/enemies/Ba1s.png"),
+        self.images = [pygame.image.load("Images/enemies/Ba1s.png"),
                             pygame.image.load("Images/enemies/Bma.png"),
                             pygame.image.load("Images/enemies/Bmw.png"),
                             pygame.image.load("Images/enemies/Bma.png")

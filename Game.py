@@ -31,8 +31,8 @@ pygame.display.set_caption("Chaos of the Vintage Variety")
 
 screen = pygame.display.set_mode(size)
 
-#pygame.mixer.music.load("music/floop.mp3")
-#pygame.mixer.music.play(-1, 0.0)
+pygame.mixer.music.load("music/floop.mp3")
+pygame.mixer.music.play(0, 0.0)
 
 
 balls = pygame.sprite.Group()
