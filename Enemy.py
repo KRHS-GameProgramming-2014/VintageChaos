@@ -3,7 +3,7 @@ from Bullet import Bullet
 
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, pos = [100,400], size = [80,80], speed = [0,0]):
+    def __init__(self, pos = [100,400], speed = [0,0], size = [80,80]):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.images = [pygame.image.load("Images/enemies/Ba1s.png"),
                             pygame.image.load("Images/enemies/Bma.png"),
@@ -29,7 +29,7 @@ class Enemy(pygame.sprite.Sprite):
         self.moving = False
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
     
-
+    #you need an update method that calls move...look though the git history
         
         
     def move(self, blocks):

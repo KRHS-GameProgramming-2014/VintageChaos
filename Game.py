@@ -199,12 +199,6 @@ while True:
                 #if optionsButton.release(event.pos):
                 #    pygame.image.load("Images/Screens/temporaryOptionsScreen.png") 
                     
-                    
-                            
-                    
-
-
-
         all.update(width, height)
 
         dirty = all.draw(screen)
@@ -249,7 +243,6 @@ while True:
     
     
     while run:
-        print "running"
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -287,11 +280,14 @@ while True:
                 if event.key == pygame.K_LEFT:
                     player2.go("stop left")
                 
-					
+                    
                     
         #---------Enemies off until images fixed-----
         if random.randint(0, 25*60) == 0:
-            Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
+            print ">>>>>>>>>>>>>>>>>>>"
+            Enemy([random.randint(100, width-100), random.randint(100, height-100)], 
+                  [random.randint(-3,3),random.randint(-3,3)]) 
+                  #'B') #...passing 'B' in to speed makes enemies not move!
         
         if timerWait < timerWaitMax:
             timerWait += 1
