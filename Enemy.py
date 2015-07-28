@@ -3,15 +3,13 @@ from Bullet import Bullet
 
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, pos = [100,400], size = [80,80], speed = [0,0]):
+    def __init__(self, pos = [100,400], speed = [0,0], size = [80,80]):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.images = [pygame.image.load("Images/enemies/Ba1w.png"),
-                                            pygame.image.load("Images/enemies/Ba1a.png"),
-                                            pygame.image.load("Images/enemies/Ba1d.png"),
-                                            pygame.image.load("Images/enemies/Ba1s.png")]
-                                            
-        
-        
+        self.images = [pygame.image.load("Images/enemies/Ba1s.png"),
+                            pygame.image.load("Images/enemies/Bma.png"),
+                            pygame.image.load("Images/enemies/Bmw.png"),
+                            pygame.image.load("Images/enemies/Bma.png")
+                            ]
         self.changed = False
         self.speed = speed
         self.stopImage = pygame.image.load("Images/enemies/Ba1s.png")
@@ -35,6 +33,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.center = pos
     
 
+
     def update(*args):
         self = args[0]
         width = args[1]
@@ -43,6 +42,9 @@ class Enemy(pygame.sprite.Sprite):
         self.move(blocks)
         self.animate()
         self.changed = False
+    
+    #you need an update method that calls move...look though the git history
+        
         
     def move(self, blocks):
         self.speed = [self.speedx, self.speedy]
@@ -87,11 +89,7 @@ class Enemy(pygame.sprite.Sprite):
     
     
     def collideBlock(self, other):
-        self.speedx = -self.speedx
-        self.speedy = -self.speedy
-        self.move()
-        self.speedx = 0
-        self.speedy = 0
+        pass
     
     def collideEnemy(self, other):
         if self != other:

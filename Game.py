@@ -28,8 +28,8 @@ pygame.display.set_caption("Chaos of the Vintage Variety")
 
 screen = pygame.display.set_mode(size)
 
-#pygame.mixer.music.load("music/floop.mp3")
-#pygame.mixer.music.play(0, 0.0)
+pygame.mixer.music.load("music/floop.mp3")
+pygame.mixer.music.play(0, 0.0)
 
 balls = pygame.sprite.Group()
 players = pygame.sprite.Group()
@@ -182,12 +182,6 @@ while True:
                 #if optionsButton.release(event.pos):
                 #    pygame.image.load("Images/Screens/temporaryOptionsScreen.png") 
                     
-                    
-                            
-                    
-
-
-
         all.update(width, height)
 
         dirty = all.draw(screen)
@@ -205,7 +199,7 @@ while True:
     level = Level(size, 50)
     level.loadLevel("1", tileType)
 
-    player1 = PlayerBall([width/3, height/2], kind1)
+    player1 = PlayerBall([width/2, height/2], kind1)
     print players.sprites()
     print player1.groups()
     player2 = PlayerBall([width/2, height/2], kind2)
@@ -220,7 +214,6 @@ while True:
 
    
     while run:
-        print "running"
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -261,11 +254,19 @@ while True:
                     
                     
         #---------Enemies off until images fixed-----
+
         if len(balls) < 10:
             if random.randint(0, 1*60) == 0:
                 Ball("Images/enemies/ba1w.png",
                           [random.randint(0,10), random.randint(0,10)],
                           [random.randint(100, width-100), random.randint(100, height-100)])
+
+        if random.randint(0, 25*60) == 0:
+            print ">>>>>>>>>>>>>>>>>>>"
+            Enemy([random.randint(100, width-100), random.randint(100, height-100)], 
+                  [random.randint(-3,3),random.randint(-3,3)]) 
+                  #'B') #...passing 'B' in to speed makes enemies not move!
+
         
         if timerWait < timerWaitMax:
             timerWait += 1
@@ -305,8 +306,8 @@ while True:
                 bully.collideBall(victem)
         
         #ONE MORE TAB ERROR
-        all.update(width, height, blocks)
-        
+        all.update(width, height)
+
         dirty = all.draw(screen)
         pygame.display.update(dirty)
         pygame.display.flip()
