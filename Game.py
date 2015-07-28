@@ -13,6 +13,7 @@ from MapSelect import ScreenSelect
 from Enemy import Enemy
 from Bullet import Bullet
 
+
 pygame.init()
 
 clock = pygame.time.Clock()
@@ -204,7 +205,7 @@ while True:
     level = Level(size, 50)
     level.loadLevel("1", tileType)
 
-    player1 = PlayerBall([width/2, height/2], kind1)
+    player1 = PlayerBall([width/3, height/2], kind1)
     print players.sprites()
     print player1.groups()
     player2 = PlayerBall([width/2, height/2], kind2)
@@ -215,8 +216,8 @@ while True:
     timerWaitMax = 6
 
 
-    score1 = Score([width-220,height-25], "Player 1:", 36)
-    score2 = Score([width-80,height-25], "Player 2:", 36)
+    score1 = Score([width-220,height-25], "Overall Score:", 36)
+
    
     while run:
         print "running"
@@ -260,8 +261,11 @@ while True:
                     
                     
         #---------Enemies off until images fixed-----
-        if random.randint(0, 0.5*60) == 0:
-            Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
+        if len(balls) < 10:
+            if random.randint(0, 1*60) == 0:
+                Ball("Images/enemies/ba1w.png",
+                          [random.randint(0,10), random.randint(0,10)],
+                          [random.randint(100, width-100), random.randint(100, height-100)])
         
         if timerWait < timerWaitMax:
             timerWait += 1
@@ -269,14 +273,23 @@ while True:
             timerWait = 0
             timer.increaseScore(.1)
 
-        playersHitEnemies = pygame.sprite.groupcollide(players, balls, False, True)
+        playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
         ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
         playersHitBlocks = pygame.sprite.groupcollide(players, blocks, False, False)
         projectilesHitEnemies = pygame.sprite.groupcollide(projectiles, enemies, True, True)
+        
 
-        for player in playersHitEnemies:
-            for ball in playersHitEnemies[player]:
-                players.CollideWall
+        for player in playersHitBalls:
+            for ball in playersHitBalls[player]:
+                score1.increaseScore(1)
+        
+        for player in playersHitBalls:
+            for ball in playersHitBalls[player]:
+                player1.collideWall
+                
+        for Enemy in ballsHitBalls:
+            for Enemy in ballsHitBalls[Enemy]:
+                player1.collideBlock
         
         #GOD DAMNED TAB ERROR....the bane of the python programmer
         for bully in ballsHitBalls:
@@ -292,11 +305,16 @@ while True:
                 bully.collideBall(victem)
         
         #ONE MORE TAB ERROR
-        all.update(width, height)
-
+        all.update(width, height, blocks)
+        
         dirty = all.draw(screen)
         pygame.display.update(dirty)
         pygame.display.flip()
+        
+        
+        
+
+        
 
 
         clock.tick(60)

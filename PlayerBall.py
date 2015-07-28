@@ -101,7 +101,7 @@ class PlayerBall(pygame.sprite.Sprite):
         if not self.didBounceX:
             #print "trying to hit Wall"
             if self.rect.left < 0 or self.rect.right > width:
-                self.speedx = 0
+                self.speedx = 2
                 self.didBounceX = True
                 #print "hit xWall"
         if not self.didBounceY:

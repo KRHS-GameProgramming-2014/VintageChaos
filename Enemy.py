@@ -5,11 +5,11 @@ from Bullet import Bullet
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, pos = [100,400], size = [80,80], speed = [0,0]):
         pygame.sprite.Sprite.__init__(self, self.containers)
-        self.images = [pygame.image.load("Images/enemies/Ba1s.png"),
-											pygame.image.load("Images/enemies/Ba1a.png"),
-											pygame.image.load("Images/enemies/Ba1d.png"),
-											pygame.image.load("Images/enemies/Ba1w.png")]
-											
+        self.images = [pygame.image.load("Images/enemies/Ba1w.png"),
+                                            pygame.image.load("Images/enemies/Ba1a.png"),
+                                            pygame.image.load("Images/enemies/Ba1d.png"),
+                                            pygame.image.load("Images/enemies/Ba1s.png")]
+                                            
         
         
         self.changed = False
@@ -30,9 +30,19 @@ class Enemy(pygame.sprite.Sprite):
         self.shooting = False
         self.moving = False
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
+        
+    def place(self, pos):
+        self.rect.center = pos
     
 
-        
+    def update(*args):
+        self = args[0]
+        width = args[1]
+        height = args[2]
+        blocks = args[3]
+        self.move(blocks)
+        self.animate()
+        self.changed = False
         
     def move(self, blocks):
         self.speed = [self.speedx, self.speedy]
@@ -77,7 +87,11 @@ class Enemy(pygame.sprite.Sprite):
     
     
     def collideBlock(self, other):
-        pass
+        self.speedx = -self.speedx
+        self.speedy = -self.speedy
+        self.move()
+        self.speedx = 0
+        self.speedy = 0
     
     def collideEnemy(self, other):
         if self != other:
@@ -89,9 +103,32 @@ class Enemy(pygame.sprite.Sprite):
                     self.speedy = -self.speedy
                     self.didBounceY = True
                     
+    def collideWall(self, width, height):
+        if not self.didBounceX:
+            #print "trying to hit Wall"
+            if self.rect.left < 0 or self.rect.right > width:
+                self.speedx = -self.speedx
+                self.didBounceX = True
+                #print "hit xWall"
+        if not self.didBounceY:
+            if self.rect.top < 0 or self.rect.bottom > height:
+                self.speedy = -self.speedy
+                self.didBounceY = True
+                #print "hit xWall"
+    
+    def collideBlock(self, other):
+        self.speedx = -self.speedx
+        self.speedy = -self.speedy
+        self.move()
+        self.speedx = 0
+        self.speedy = 0
+                    
     def distance(self, pt):
         x1 = self.rect.center[0]
         y1 = self.rect.center[1]
         x2 = pt[0]
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))       
+        
+        
+    
