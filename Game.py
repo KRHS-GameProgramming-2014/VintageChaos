@@ -12,9 +12,6 @@ from TileSelect import TileSelect
 from MapSelect import ScreenSelect
 from Enemy import Enemy
 from Bullet import Bullet
-#from Cursor import Pointer
-
-
 
 pygame.init()
 
@@ -24,16 +21,14 @@ width = 1000
 height = 700
 size = width, height
 
-
 bgColor = r,g,b = 0, 0, 10
 
 pygame.display.set_caption("Chaos of the Vintage Variety")
 
 screen = pygame.display.set_mode(size)
 
-pygame.mixer.music.load("music/floop.mp3")
-pygame.mixer.music.play(0, 0.0)
-
+#pygame.mixer.music.load("music/floop.mp3")
+#pygame.mixer.music.play(0, 0.0)
 
 balls = pygame.sprite.Group()
 players = pygame.sprite.Group()
@@ -44,7 +39,6 @@ menuItems = pygame.sprite.Group()
 enemies = pygame.sprite.Group()
 all = pygame.sprite.OrderedUpdates()
 projectiles = pygame.sprite.Group()
-#pointers = pygame.sprite.Group()
 
 Ball.containers = (all, balls)
 PlayerBall.containers = (all, players)
@@ -57,13 +51,8 @@ ScreenSelect.containers = (all, menuItems)
 Score.containers = (all, hudItems)
 Enemy.containers = (all, enemies)
 Bullet.containers = (all, projectiles)
-#Pointer.containers = (all, pointers)
-
 
 run = False
-
-
-
 
 BackGround("Images/mmscreens/vbg.png", size)
 
@@ -71,11 +60,8 @@ pygame.mouse.set_cursor(*pygame.cursors.diamond)
 
 startButton = Button([width/2, height-580],
                      "Images/Buttons/StartButton.png")
-
 ps1 = PlayerSelect([width/7, height-580])
 ps2 = PlayerSelect([width-(width/7), height-580])
-
-
 
 kind1 = ""
 kind2 = ""
@@ -119,10 +105,6 @@ mapselectrightButton = Button([width/1.05, height-300],
 #                  "Images/Buttons/OptionsButton.png",
 #                   "Images/Buttons/OptionsButtonC.png")
                     
-
-
-
-
 tile = TileSelect([width/4, height-300])
 cleanscreen = ScreenSelect([width/1.35, height-300])
 
@@ -212,21 +194,12 @@ while True:
         pygame.display.flip()
         clock.tick(60)
         
-    #Pointer("Cursors/RedCursor.png")
-    #pygame.mouse.set_visible(True)
-        
-
     kind1 = ps1.select()
     kind2 = ps2.select()
     tileType = tile.select()
     cleanscreenType = cleanscreen.select()
     all.empty()
     
-
-
-
-
-
     BackGround("Images/Screens/"+cleanscreenType, size)
     level = Level(size, 50)
     level.loadLevel("1", tileType)
@@ -244,10 +217,7 @@ while True:
 
     score1 = Score([width-220,height-25], "Player 1:", 36)
     score2 = Score([width-80,height-25], "Player 2:", 36)
-    
-
-    
-    
+   
     while run:
         print "running"
         for event in pygame.event.get():
@@ -287,10 +257,10 @@ while True:
                 if event.key == pygame.K_LEFT:
                     player2.go("stop left")
                 
-					
+                    
                     
         #---------Enemies off until images fixed-----
-        if random.randint(0, 25*60) == 0:
+        if random.randint(0, 0.5*60) == 0:
             Enemy([random.randint(100, width-100), random.randint(100, height-100)], 'B')
         
         if timerWait < timerWaitMax:
@@ -299,13 +269,13 @@ while True:
             timerWait = 0
             timer.increaseScore(.1)
 
-        playersHitBalls = pygame.sprite.groupcollide(players, balls, False, True)
+        playersHitEnemies = pygame.sprite.groupcollide(players, balls, False, True)
         ballsHitBalls = pygame.sprite.groupcollide(balls, balls, False, False)
         playersHitBlocks = pygame.sprite.groupcollide(players, blocks, False, False)
         projectilesHitEnemies = pygame.sprite.groupcollide(projectiles, enemies, True, True)
 
-        for player in playersHitBalls:
-            for ball in playersHitBalls[player]:
+        for player in playersHitEnemies:
+            for ball in playersHitEnemies[player]:
                 players.CollideWall
         
         #GOD DAMNED TAB ERROR....the bane of the python programmer
