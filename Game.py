@@ -28,7 +28,7 @@ pygame.display.set_caption("Chaos of the Vintage Variety")
 
 screen = pygame.display.set_mode(size)
 
-pygame.mixer.music.load("music/floop.mp3")
+pygame.mixer.music.load("music/flipfloop.mp3")
 pygame.mixer.music.play(0, 0.0)
 
 balls = pygame.sprite.Group()
@@ -202,7 +202,7 @@ while True:
     player1 = PlayerBall([width/2, height/2], kind1)
     print players.sprites()
     print player1.groups()
-    player2 = PlayerBall([width/2, height/2], kind2)
+    player2 = PlayerBall([width/3, height/2], kind2)
     print players.sprites()
     print player2.groups()
     timer = Score([80, height - 25], "Time: ", 36)
@@ -261,11 +261,11 @@ while True:
                           [random.randint(0,10), random.randint(0,10)],
                           [random.randint(100, width-100), random.randint(100, height-100)])
 
-        if random.randint(0, 25*60) == 0:
-            print ">>>>>>>>>>>>>>>>>>>"
-            Enemy([random.randint(100, width-100), random.randint(100, height-100)], 
-                  [random.randint(-3,3),random.randint(-3,3)]) 
-                  #'B') #...passing 'B' in to speed makes enemies not move!
+        #if random.randint(0, 25*60) == 0:
+         #   print ">>>>>>>>>>>>>>>>>>>"
+          #  Enemy([random.randint(100, width-100), random.randint(100, height-100)], 
+           #       [random.randint(-3,3),random.randint(-3,3)]) 
+            #      #'B') #...passing 'B' in to speed makes enemies not move!
 
         
         if timerWait < timerWaitMax:

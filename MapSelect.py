@@ -5,9 +5,9 @@ class ScreenSelect(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self, self.containers)
         self.images = [pygame.image.load("Images/CleanScreen/3drbg.png"),
                        pygame.image.load("Images/CleanScreen/3dbg.png"),
-                       pygame.image.load("Images/CleanScreen/3dgbg.png")] #desert basement images not present
-                       #pygame.image.load("Images/CleanScreen/desert.png"),
-                       #pygame.image.load("Images/CleanScreen/basement.png")]
+                       pygame.image.load("Images/CleanScreen/3dgbg.png"), #desert basement images not present
+                       pygame.image.load("Images/CleanScreen/desert.png"),
+                       pygame.image.load("Images/CleanScreen/basement.png")]
         self.frame = 0
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
