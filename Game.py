@@ -261,11 +261,11 @@ while True:
                           [random.randint(0,10), random.randint(0,10)],
                           [random.randint(100, width-100), random.randint(100, height-100)])
 
-        #if random.randint(0, 25*60) == 0:
-         #   print ">>>>>>>>>>>>>>>>>>>"
-          #  Enemy([random.randint(100, width-100), random.randint(100, height-100)], 
-           #       [random.randint(-3,3),random.randint(-3,3)]) 
-            #      #'B') #...passing 'B' in to speed makes enemies not move!
+        if random.randint(0, 25*60) == 0:
+            print ">>>>>>>>>>>>>>>>>>>"
+            Enemy([random.randint(100, width-100), random.randint(100, height-100)], 
+                  [random.randint(-3,3),random.randint(-3,3)]) 
+                  #'B') #...passing 'B' in to speed makes enemies not move!
 
         
         if timerWait < timerWaitMax:
