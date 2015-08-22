@@ -11,7 +11,7 @@ from PlayerSelect import PlayerSelect
 from TileSelect import TileSelect
 from MapSelect import ScreenSelect
 from Enemy import Enemy
-from Bullet import Bullet
+
 
 
 pygame.init()
@@ -51,7 +51,7 @@ TileSelect.containers = (all, menuItems)
 ScreenSelect.containers = (all, menuItems)
 Score.containers = (all, hudItems)
 Enemy.containers = (all, enemies)
-Bullet.containers = (all, projectiles)
+#Bullet.containers = (all, projectiles)
 
 run = False
 
@@ -78,29 +78,29 @@ quitButton = Button([width/1.32, height-75.5],
                     "Images/Buttons/QButtonC.png")
                     
 playeroneleftButton = Button([width/25, height-600.5],
-                    "Arrow Buttons/ArrowL.png")
+                    "ArrowButtons/ArrowL.png")
 
 playeronerightButton = Button([width/4, height-600.5],
-                    "Arrow Buttons/ArrowR.png")
+                    "ArrowButtons/ArrowR.png")
 
 playertwoleftButton = Button([width/1.35, height-600.5],
-                    "Arrow Buttons/ArrowL.png")
+                    "ArrowButtons/ArrowL.png")
                     
 playertworightButton = Button([width/1.05, height-600.5],
-                    "Arrow Buttons/ArrowR.png")
+                    "ArrowButtons/ArrowR.png")
                     
 tileselectleftButton = Button([width/20, height-300],
-                    "Arrow Buttons/ArrowLC.png")
+                    "ArrowButtons/ArrowLC.png")
                     
 tileselectrightButton = Button([width/2.3, height-300],
-                    "Arrow Buttons/ArrowRC.png")
+                    "ArrowButtons/ArrowRC.png")
                     
 mapselectleftButton = Button([width/1.85, height-300],
 
-                    "Arrow Buttons/ArrowLC.png")
+                    "ArrowButtons/ArrowLC.png")
                     
 mapselectrightButton = Button([width/1.05, height-300],
-                    "Arrow Buttons/ArrowRC.png")
+                    "ArrowButtons/ArrowRC.png")
                 
 #optionsButton = Button([width/4, height-77],
 #                  "Images/Buttons/OptionsButton.png",
